@@ -5,3 +5,13 @@ services:
       - "8080:8080"
     volumes:
       - ./docs:/usr/local/structurizr
+
+  web_server:
+    container_name: web_server
+    build:
+      context: .
+      dockerfile: src/dockerfile  # specify path to the Dockerfile here
+    ports:
+      - "2020:2020"
+
+  
