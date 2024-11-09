@@ -1,19 +1,21 @@
 #!/bin/bash
 
-echo "Checking if the container is already running..."
+CONTAINER_NAME="system_application"
 
-# Check if the container is running
-if docker ps -q -f name=db_service > /dev/null; then
-    echo "Container is running, stopping and removing it..."
-    docker stop db_service
-    docker rm db_service
+echo "Checking if the container $CONTAINER_NAME already exists..."
+
+# Check if the container exists (either running or stopped)
+if docker ps -a -q -f name=$CONTAINER_NAME > /dev/null; then
+    echo "Container $CONTAINER_NAME exists, stopping and removing it..."
+    docker stop $CONTAINER_NAME 2>/dev/null
+    docker rm $CONTAINER_NAME
 else
-    echo "No running container found."
+    echo "No existing container with the name $CONTAINER_NAME found."
 fi
 
 echo "Building the application locally..."
 
-# Build the application locally using cmake
+# Build the application locally using CMake
 mkdir -p build
 cd build
 cmake ..
@@ -39,10 +41,10 @@ fi
 
 echo "Running the Docker container..."
 
-# Run the Docker container
-docker run --name db_service database
+# Run the Docker container using Docker Compose
+docker-compose up --build
 
-# Check if the container started successfully-.æ
+# Check if the container started successfully
 if [ $? -ne 0 ]; then
     echo "Failed to start the container! Exiting..."
     exit 1

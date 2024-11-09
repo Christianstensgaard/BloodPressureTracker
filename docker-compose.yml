@@ -1,17 +1,22 @@
 services:
-  structurizr:
-    image: structurizr/lite
-    ports:
-      - "8080:8080"
-    volumes:
-      - ./docs:/usr/local/structurizr
+  # structurizr:
+  #   image: structurizr/lite
+  #   ports:
+  #     - "8080:8080"
+  #   volumes:
+  #     - ./docs:/usr/local/structurizr
 
-  web_server:
-    container_name: web_server
+  application_engine:
+    container_name: system_application
     build:
-      context: .
-      dockerfile: src/dockerfile  # specify path to the Dockerfile here
+      context: ./src/
+      dockerfile: dockerfile
     ports:
       - "2020:2020"
+    environment:
+      #Designed to be disabled. Add or remove features
+      - patient_active=true
+      - measure_active=true
+
 
   

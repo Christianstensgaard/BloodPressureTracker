@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  jenkins:
+    image: jenkins/jenkins:lts    # Use the LTS version of Jenkins
+    container_name: jenkins_server
+    restart: always
+    ports:
+      - "8080:8080"               # Jenkins Web UI
+      - "50000:50000"             # Jenkins agent connection port
+    volumes:
+      - jenkins_home:/var/jenkins_home  # Persistent Jenkins data
+    environment:
+      - JENKINS_OPTS=--prefix=/jenkins  # Optional: set a URL prefix for Jenkins
+
+volumes:
+  jenkins_home:
