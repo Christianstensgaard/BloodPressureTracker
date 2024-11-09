@@ -9,8 +9,15 @@ RUN apt-get update && \
     libmysqlcppconn-dev && \
     apt-get clean
 
-RUN apt-get 
+
+# Creating the work dir, for the files. 
+WORKDIR /usr/src/source
+COPY /src/ /usr/src/source/
+
+RUN chmod += build.sh
+
+ENTRYPOINT [ "/usr/src/source/build.sh" ]
 
 
 
-RUN ls
+
