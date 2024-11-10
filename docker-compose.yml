@@ -7,16 +7,13 @@ services:
   #     - ./docs:/usr/local/structurizr
 
   application_engine:
-    container_name: system_application
-    build:
-      context: ./src/
-      dockerfile: dockerfile
+    container_name: system_app
+    image: system_app
     ports:
       - "2020:2020"
     environment:
       #Designed to be disabled. Add or remove features
       - patient_active=true
       - measure_active=true
-
 
   

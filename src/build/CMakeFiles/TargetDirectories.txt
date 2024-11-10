@@ -1,7 +1,3 @@
 /mnt/c/git/BloodPressureTracker/src/build/CMakeFiles/BloodPressureTracker.dir
-/mnt/c/git/BloodPressureTracker/src/build/CMakeFiles/docker.dir
-/mnt/c/git/BloodPressureTracker/src/build/CMakeFiles/run.dir
-/mnt/c/git/BloodPressureTracker/src/build/CMakeFiles/clean_docker.dir
-/mnt/c/git/BloodPressureTracker/src/build/CMakeFiles/full_build.dir
 /mnt/c/git/BloodPressureTracker/src/build/CMakeFiles/edit_cache.dir
 /mnt/c/git/BloodPressureTracker/src/build/CMakeFiles/rebuild_cache.dir

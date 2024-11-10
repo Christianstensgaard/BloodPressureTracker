@@ -39,6 +39,10 @@ int main(int argc, char const *argv[])
   printf("------------------\n");
 
 
+  printf("Hello from new build\n");
+  printf("Hello from new build 1 \n");
+  printf("Hello from new build 2 \n");
+
   printf("Starting All the underlaying system ");
 
 

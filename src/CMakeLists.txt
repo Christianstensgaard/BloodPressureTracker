@@ -18,31 +18,31 @@ set(SRC_FILES
 # Add executable target
 add_executable(${PROJECT_NAME} ${SRC_FILES})
 
-# Docker-related commands - use external commands within CMake
-add_custom_target(
-    docker
-    COMMAND docker build -t database -f dockerfile .
-    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-    COMMENT "Building the Docker image"
-)
+# # Docker-related commands - use external commands within CMake
+# add_custom_target(
+#     docker
+#     COMMAND docker build -t database -f dockerfile .
+#     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+#     COMMENT "Building the Docker image"
+# )
 
-add_custom_target(
-    run
-    COMMAND docker run --name db_service database
-    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-    COMMENT "Running the Docker container"
-)
+# add_custom_target(
+#     run
+#     COMMAND docker run --name db_service database
+#     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+#     COMMENT "Running the Docker container"
+# )
 
-add_custom_target(
-    clean_docker
-    COMMAND docker ps -q -f name=db_service | grep -q . && docker stop db_service && docker rm db_service || echo "No running container found."
-    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-    COMMENT "Stopping and removing the Docker container if it exists"
-)
+# add_custom_target(
+#     clean_docker
+#     COMMAND docker ps -q -f name=db_service | grep -q . && docker stop db_service && docker rm db_service || echo "No running container found."
+#     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+#     COMMENT "Stopping and removing the Docker container if it exists"
+# )
 
-# Combine Docker tasks into one target
-add_custom_target(
-    full_build
-    DEPENDS clean_docker docker run
-    COMMENT "Full Build: Clean Docker, Build Image, Run Container"
-)
+# # Combine Docker tasks into one target
+# add_custom_target(
+#     full_build
+#     DEPENDS clean_docker docker run
+#     COMMENT "Full Build: Clean Docker, Build Image, Run Container"
+# )
