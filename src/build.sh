@@ -18,3 +18,5 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "Build completed successfully."
+
+./BloodPressureTracker

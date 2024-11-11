@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/BloodPressureTracker.dir/doctorService.cpp.o CMakeFiles/BloodPressureTracker.dir/patientService.cpp.o CMakeFiles/BloodPressureTracker.dir/main.cpp.o -o BloodPressureTracker 
+/usr/bin/c++ CMakeFiles/BloodPressureTracker.dir/databaseController.cpp.o CMakeFiles/BloodPressureTracker.dir/tcpSocket.cpp.o CMakeFiles/BloodPressureTracker.dir/main.cpp.o -o BloodPressureTracker  /usr/lib/x86_64-linux-gnu/libmysqlcppconn.so 

@@ -7,7 +7,7 @@ namespace bms
   /// @brief Patient model, used to store the data into the database
   struct patientModel
   {
-    char ssn[10];
+    char ssn[11];
     char mail[128];
     char name[50];
   };
@@ -31,6 +31,178 @@ namespace bms
     const char* table;
     const char* value;
   };
+
+
+
+
+  #define char_map_size 10
+
+
+  /*
+    * Json element, are created to Read Json files, from the web_server.
+      The plan is to create something that can read the request and parse
+      it to the database. 
+
+      This way i can simulate the flow of the application without, creating the
+      web-server. and still keep it realistic. 
+
+
+
+      Christian .j
+    * 
+   */
+
+  class JsonElement{
+    public:
+    JsonElement(const char* data){
+      this->data = data;
+
+      
+
+
+      
+
+
+
+
+
+
+
+    }
+
+
+
+    const char* getJson(){
+      return data;
+    }
+
+    bool hasAttribute(const char* key){
+      
+
+
+
+      return true;
+    }
+
+    bool equal( const char* t1, const char* t2){
+      for (size_t i = 0; i < 200; i++)
+      {
+        if(t1[i] == '\0' || t2[i] == '\0')
+          break;
+
+        if(t1[i] != t2[i])
+          return false;
+      }
+      return true;
+    }
+    void findValue(int &start, int &end, int index){
+      start = -1; //- Setting default value
+      end   = -1; //- Setting default value
+
+      bool error = false;
+      while(1){
+        if(data[index] == '\0' || data[index] == '\n'){
+          error = true;
+          break;
+        }
+        if(data[index] == (char)':')
+          break;
+        index++;
+      }
+
+      if(error){
+        printf("Error on Reading\n");
+        return;
+      }
+
+      if(data[index+ 1] == (char)'"')
+        index += 1;
+
+      if(data[index + 2] == (char)'"')
+        index += 2;
+
+
+      start = ++index;
+
+      while(1){
+
+        if(data[index] == '\0' || data[index] == '\n'){
+          error = true;
+          break;
+        }
+
+        if(data[index] == (char)'"')
+          break;
+
+        index++;
+      }
+
+      end = index;
+    }
+    void unpack(const char* element){
+
+    }
+    void seekTotalElements(int &amount){
+      int i = 0;
+      while(data[i] != '\0'){
+        if(data[i++] == '\n')
+          amount++;
+
+
+      }
+    }
+    int seekElement(const char *element, int &start, int &end){
+      char first = element[0];
+      int i = 0;
+
+      while(1){
+        if(data[i] == '\0')
+          return -1;
+
+        if(data[i] == first){
+          
+          start = i++;
+          int x1 = 0;
+
+          while (1)
+          {
+            if(data[i] == '\0' || element[x1] == '\0')
+              return -1;
+
+            if(data[i++] != element[x1++])
+              break;
+          }
+
+
+          end = i;
+          return 1;
+        }
+        i++;
+      }
+    }
+    int findChar(const char key){
+      int position = 0;
+      while(true){
+        if(data[position] == '\0')
+          break;
+
+        if(data[position] == key)
+          return position;
+
+        position++;
+      }
+      return -1;
+    }
+
+    private:
+
+    char keyValue[10][2];
+    const char* data;
+  };
+
+
+
+
 
 
 

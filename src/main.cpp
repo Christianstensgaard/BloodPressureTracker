@@ -1,55 +1,94 @@
 #include <stdio.h>
 #include <cstdlib>
+#include "headers/tcpSocket.h"
 
-#define CONNECTIONSTRING "DO_SOME_CONNECTON";
+#include "headers/databaseController.h"
+#include "headers/threadPool.h"
+#include "headers/dbModels.h"
+
+  // Sample JSON as a char*
+const char* json_data = R"(
+{
+  "patient": {
+    "ssn": "002020201",
+    "mail":"BjarneHus@outlook.dk",
+    "name":"Bjarne Hus Lund"
+    }
+  }
+}
+)";
+
+
+
+
+
 
 
 const char* connectionstring = std::getenv("connectionstring");
 const char* systemApplication = std::getenv("sysApp");
-
-
 const char* patientActive = std::getenv("patient_active");
 const char* measureActive = std::getenv("measure_active");
 
+using namespace bms;
+
+DatabaseController db;
 
 
-
-void openConnectionToDb(){
-  const char* connectionString = CONNECTIONSTRING;
-  printf("connecting to database!\n");
-
+void copy(char* t1, const char* t2, int size){
+  strncpy(t1, t2, size);
+  t1[size] = '\0';
 }
 
-void openConnectionToSocket(){
-  
 
 
+bool equal(const char* t1, const char* t2){
 
 
-  printf("Connecting to Websocket!\n");
+  for (size_t i = 0; i < 200; i++)
+  {
+    if(t1[i] == '\0' || t2[i] == '\0')
+      break;
+
+    if(t1[i] != t2[i])
+      return false;
+  }
+  return true;
 }
+
+
+
+
+
+
+
+
 
 int main(int argc, char const *argv[])
 {
-  printf("Hello from main!\n");
-
-  printf("Reading Envioment\n");
-  printf("Patient feature active:    -: %s\n", patientActive);
-  printf("Measurement feature active -: %s\n", measureActive);
-  printf("------------------\n");
+  JsonElement jElement(json_data);
 
 
-  printf("Hello from new build\n");
-  printf("Hello from new build 1 \n");
-  printf("Hello from new build 2 \n");
 
-  printf("Starting All the underlaying system ");
+  int size = 0;
 
-
-  openConnectionToDb();
-  openConnectionToSocket();
+  jElement.seekTotalElements(size);
 
 
-  printf("Closing Application!\n");
+  printf("%i\n", size);
+
+
+  int start = 0;
+  int end = 0;
+
+  int state = jElement.seekElement("patient", start, end);
+
+
+
+
+  printf("Start: %i\n", start);
+  printf("End:   %i\n", end);
+  printf("State: %i\n", state);
+
+  printf("-------------------------------------\n");
   return 0;
 }

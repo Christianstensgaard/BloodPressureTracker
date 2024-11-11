@@ -1,4 +1,4 @@
-#include "tcpSocket.h"
+#include "headers/tcpSocket.h"
 
 TCPServer::TCPServer(int port)
 {
@@ -34,7 +34,6 @@ bool TCPServer::start() {
         return false;
     }
 
-    // Step 3: Start listening for incoming connections
     if (listen(server_fd, 3) < 0) {
         perror("Listen failed");
         stop();

@@ -60,7 +60,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = /mnt/c/git/BloodPressureTracker/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /mnt/c/git/BloodPressureTracker/build_output
+CMAKE_BINARY_DIR = /mnt/c/git/BloodPressureTracker/src
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/git/BloodPressureTracker/build_output/CMakeFiles /mnt/c/git/BloodPressureTracker/build_output//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/git/BloodPressureTracker/src/CMakeFiles /mnt/c/git/BloodPressureTracker/src//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/git/BloodPressureTracker/build_output/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/git/BloodPressureTracker/src/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -129,29 +129,29 @@ BloodPressureTracker/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BloodPressureTracker.dir/build.make CMakeFiles/BloodPressureTracker.dir/build
 .PHONY : BloodPressureTracker/fast
 
-databaseController.o: databaseController.cpp.o
-.PHONY : databaseController.o
+doctorService.o: doctorService.cpp.o
+.PHONY : doctorService.o
 
 # target to build an object file
-databaseController.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BloodPressureTracker.dir/build.make CMakeFiles/BloodPressureTracker.dir/databaseController.cpp.o
-.PHONY : databaseController.cpp.o
+doctorService.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BloodPressureTracker.dir/build.make CMakeFiles/BloodPressureTracker.dir/doctorService.cpp.o
+.PHONY : doctorService.cpp.o
 
-databaseController.i: databaseController.cpp.i
-.PHONY : databaseController.i
+doctorService.i: doctorService.cpp.i
+.PHONY : doctorService.i
 
 # target to preprocess a source file
-databaseController.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BloodPressureTracker.dir/build.make CMakeFiles/BloodPressureTracker.dir/databaseController.cpp.i
-.PHONY : databaseController.cpp.i
+doctorService.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BloodPressureTracker.dir/build.make CMakeFiles/BloodPressureTracker.dir/doctorService.cpp.i
+.PHONY : doctorService.cpp.i
 
-databaseController.s: databaseController.cpp.s
-.PHONY : databaseController.s
+doctorService.s: doctorService.cpp.s
+.PHONY : doctorService.s
 
 # target to generate assembly for a file
-databaseController.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BloodPressureTracker.dir/build.make CMakeFiles/BloodPressureTracker.dir/databaseController.cpp.s
-.PHONY : databaseController.cpp.s
+doctorService.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BloodPressureTracker.dir/build.make CMakeFiles/BloodPressureTracker.dir/doctorService.cpp.s
+.PHONY : doctorService.cpp.s
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -176,6 +176,30 @@ main.s: main.cpp.s
 main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BloodPressureTracker.dir/build.make CMakeFiles/BloodPressureTracker.dir/main.cpp.s
 .PHONY : main.cpp.s
+
+patientService.o: patientService.cpp.o
+.PHONY : patientService.o
+
+# target to build an object file
+patientService.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BloodPressureTracker.dir/build.make CMakeFiles/BloodPressureTracker.dir/patientService.cpp.o
+.PHONY : patientService.cpp.o
+
+patientService.i: patientService.cpp.i
+.PHONY : patientService.i
+
+# target to preprocess a source file
+patientService.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BloodPressureTracker.dir/build.make CMakeFiles/BloodPressureTracker.dir/patientService.cpp.i
+.PHONY : patientService.cpp.i
+
+patientService.s: patientService.cpp.s
+.PHONY : patientService.s
+
+# target to generate assembly for a file
+patientService.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BloodPressureTracker.dir/build.make CMakeFiles/BloodPressureTracker.dir/patientService.cpp.s
+.PHONY : patientService.cpp.s
 
 tcpSocket.o: tcpSocket.cpp.o
 .PHONY : tcpSocket.o
@@ -210,12 +234,15 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... BloodPressureTracker"
-	@echo "... databaseController.o"
-	@echo "... databaseController.i"
-	@echo "... databaseController.s"
+	@echo "... doctorService.o"
+	@echo "... doctorService.i"
+	@echo "... doctorService.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... patientService.o"
+	@echo "... patientService.i"
+	@echo "... patientService.s"
 	@echo "... tcpSocket.o"
 	@echo "... tcpSocket.i"
 	@echo "... tcpSocket.s"

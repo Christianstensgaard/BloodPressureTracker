@@ -8,15 +8,26 @@ project(BloodPressureTracker VERSION 1.0)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+include_directories(${CMAKE_SOURCE_DIR}/src/headers)
+
 # Specify the source files for the project
-set(SRC_FILES 
-    doctorService.cpp
-    patientService.cpp
+set(SRC_FILES
+    databaseController.cpp
+    tcpSocket.cpp
     main.cpp
 )
 
 # Add executable target
 add_executable(${PROJECT_NAME} ${SRC_FILES})
+
+
+# Link MySQL Connector/C++ library
+find_library(MYSQLCPP_LIB mysqlcppconn PATHS /usr/lib /usr/local/lib)
+if (MYSQLCPP_LIB)
+    target_link_libraries(${PROJECT_NAME} ${MYSQLCPP_LIB})
+else()
+    message(FATAL_ERROR "MySQL Connector/C++ library not found")
+endif()
 
 # # Docker-related commands - use external commands within CMake
 # add_custom_target(

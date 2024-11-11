@@ -1,19 +1,10 @@
 services:
-  # structurizr:
-  #   image: structurizr/lite
-  #   ports:
-  #     - "8080:8080"
-  #   volumes:
-  #     - ./docs:/usr/local/structurizr
-
-  application_engine:
-    container_name: system_app
-    image: system_app
+  structurizr:
+    image: structurizr/lite
     ports:
-      - "2020:2020"
-    environment:
-      #Designed to be disabled. Add or remove features
-      - patient_active=true
-      - measure_active=true
+      - "8080:8080"
+    volumes:
+      - ./docs:/usr/local/structurizr
+
 
   

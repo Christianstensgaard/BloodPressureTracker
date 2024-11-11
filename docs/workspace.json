@@ -4,7 +4,7 @@
   "documentation" : { },
   "id" : 1,
   "lastModifiedAgent" : "structurizr-ui",
-  "lastModifiedDate" : "2024-11-07T16:24:14Z",
+  "lastModifiedDate" : "2024-11-11T16:45:06Z",
   "model" : {
     "people" : [ {
       "description" : "A patient who enters blood pressure measurements",
@@ -413,7 +413,7 @@
     } ],
     "configuration" : {
       "branding" : { },
-      "lastSavedView" : "BloodPressureSystem",
+      "lastSavedView" : "PatientService",
       "metadataSymbols" : "SquareBrackets",
       "styles" : {
         "elements" : [ {
@@ -462,31 +462,31 @@
       "elements" : [ {
         "id" : "1",
         "x" : 200,
-        "y" : 200
+        "y" : 199
       }, {
         "id" : "2",
         "x" : 200,
-        "y" : 900
+        "y" : 899
       }, {
         "id" : "4",
         "x" : 2400,
-        "y" : 600
+        "y" : 599
       }, {
         "id" : "5",
         "x" : 900,
-        "y" : 300
+        "y" : 299
       }, {
         "id" : "6",
         "x" : 1650,
-        "y" : 300
+        "y" : 299
       }, {
         "id" : "12",
         "x" : 900,
-        "y" : 900
+        "y" : 899
       }, {
         "id" : "13",
         "x" : 1650,
-        "y" : 900
+        "y" : 899
       } ],
       "externalSoftwareSystemBoundariesVisible" : false,
       "key" : "BloodPressureSystem",
@@ -512,7 +512,7 @@
     } ],
     "systemContextViews" : [ {
       "automaticLayout" : {
-        "applied" : false,
+        "applied" : true,
         "edgeSeparation" : 0,
         "implementation" : "Graphviz",
         "nodeSeparation" : 300,
@@ -520,18 +520,22 @@
         "rankSeparation" : 300,
         "vertices" : false
       },
+      "dimensions" : {
+        "height" : 1500,
+        "width" : 1550
+      },
       "elements" : [ {
         "id" : "1",
-        "x" : 0,
-        "y" : 0
+        "x" : 199,
+        "y" : 200
       }, {
         "id" : "2",
-        "x" : 0,
-        "y" : 0
+        "x" : 199,
+        "y" : 900
       }, {
         "id" : "3",
-        "x" : 0,
-        "y" : 0
+        "x" : 899,
+        "y" : 600
       } ],
       "enterpriseBoundaryVisible" : true,
       "key" : "SystemContext",
