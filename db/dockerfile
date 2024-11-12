@@ -1,0 +1,15 @@
+# Use official MySQL image from Docker Hub
+FROM mysql:8.0
+
+# Set environment variables for MySQL root password
+ENV MYSQL_ROOT_PASSWORD=my-secret-pw
+ENV MYSQL_DATABASE=HospitalDB
+
+# Copy the init.sql file into the Docker container
+COPY init.sql /docker-entrypoint-initdb.d/
+
+# Expose the default MySQL port
+EXPOSE 3306
+
+# Start MySQL
+CMD ["mysqld"]

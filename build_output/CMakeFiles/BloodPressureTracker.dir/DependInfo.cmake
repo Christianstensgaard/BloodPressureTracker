@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/mnt/c/git/BloodPressureTracker/src/databaseController.cpp" "CMakeFiles/BloodPressureTracker.dir/databaseController.cpp.o" "gcc" "CMakeFiles/BloodPressureTracker.dir/databaseController.cpp.o.d"
   "/mnt/c/git/BloodPressureTracker/src/main.cpp" "CMakeFiles/BloodPressureTracker.dir/main.cpp.o" "gcc" "CMakeFiles/BloodPressureTracker.dir/main.cpp.o.d"
+  "/mnt/c/git/BloodPressureTracker/src/patientController.cpp" "CMakeFiles/BloodPressureTracker.dir/patientController.cpp.o" "gcc" "CMakeFiles/BloodPressureTracker.dir/patientController.cpp.o.d"
   "/mnt/c/git/BloodPressureTracker/src/tcpSocket.cpp" "CMakeFiles/BloodPressureTracker.dir/tcpSocket.cpp.o" "gcc" "CMakeFiles/BloodPressureTracker.dir/tcpSocket.cpp.o.d"
   )
 

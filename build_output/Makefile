@@ -177,6 +177,30 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BloodPressureTracker.dir/build.make CMakeFiles/BloodPressureTracker.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+patientController.o: patientController.cpp.o
+.PHONY : patientController.o
+
+# target to build an object file
+patientController.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BloodPressureTracker.dir/build.make CMakeFiles/BloodPressureTracker.dir/patientController.cpp.o
+.PHONY : patientController.cpp.o
+
+patientController.i: patientController.cpp.i
+.PHONY : patientController.i
+
+# target to preprocess a source file
+patientController.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BloodPressureTracker.dir/build.make CMakeFiles/BloodPressureTracker.dir/patientController.cpp.i
+.PHONY : patientController.cpp.i
+
+patientController.s: patientController.cpp.s
+.PHONY : patientController.s
+
+# target to generate assembly for a file
+patientController.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BloodPressureTracker.dir/build.make CMakeFiles/BloodPressureTracker.dir/patientController.cpp.s
+.PHONY : patientController.cpp.s
+
 tcpSocket.o: tcpSocket.cpp.o
 .PHONY : tcpSocket.o
 
@@ -216,6 +240,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... patientController.o"
+	@echo "... patientController.i"
+	@echo "... patientController.s"
 	@echo "... tcpSocket.o"
 	@echo "... tcpSocket.i"
 	@echo "... tcpSocket.s"

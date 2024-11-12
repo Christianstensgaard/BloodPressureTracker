@@ -1,8 +1,8 @@
 -- Create the database
-CREATE DATABASE medical_data;
+CREATE DATABASE bm_db;
 
 -- Use the database
-USE medical_data;
+USE bm_db;
 
 -- Create the patients table
 CREATE TABLE patients (
@@ -29,8 +29,25 @@ CREATE INDEX idx_measurement_date ON measurements(date);
 CREATE INDEX idx_measurement_ssn ON measurements(ssn);
 
 -- Optional: Add some sample data to test the schema
-INSERT INTO patients (ssn, mail, name) VALUES ('1234567890', 'example@mail.com', 'John Doe');
+INSERT INTO patients (ssn, mail, name) VALUES 
+(   '1234567590', 
+    'Mette@outlook.com', 
+    'Mette Lykke Slot'
+);
+
+INSERT INTO patients (ssn, mail, name) VALUES 
+(   '1234567891', 
+    'Benny@gmail.com', 
+    'Benny Hansen'
+);
+
+INSERT INTO patients (ssn, mail, name) VALUES 
+(   '1234567893', 
+    'Jens@hotmail.com', 
+    'Jens løg Hansen'
+);
+
 INSERT INTO measurements (ssn, date, systolic, diastolic, seen) 
 VALUES 
-('1234567890', '2023-11-07 12:30:00', 120, 80, 1),
-('1234567890', '2023-11-08 14:15:00', 130, 85, 0);
+('1234567891', '2023-11-07 12:30:00', 120, 80, 1),
+('1234567893', '2023-11-08 14:15:00', 130, 85, 0);

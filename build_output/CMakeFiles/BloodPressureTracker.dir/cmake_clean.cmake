@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/BloodPressureTracker.dir/databaseController.cpp.o.d"
   "CMakeFiles/BloodPressureTracker.dir/main.cpp.o"
   "CMakeFiles/BloodPressureTracker.dir/main.cpp.o.d"
+  "CMakeFiles/BloodPressureTracker.dir/patientController.cpp.o"
+  "CMakeFiles/BloodPressureTracker.dir/patientController.cpp.o.d"
   "CMakeFiles/BloodPressureTracker.dir/tcpSocket.cpp.o"
   "CMakeFiles/BloodPressureTracker.dir/tcpSocket.cpp.o.d"
 )
