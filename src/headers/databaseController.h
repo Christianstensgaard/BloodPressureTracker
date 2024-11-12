@@ -6,22 +6,19 @@
 #include <cppconn/statement.h>
 #include <cppconn/resultset.h>
 #include <cppconn/exception.h>
+#include <cppconn/prepared_statement.h>
 
 
-namespace bms{
-  class DatabaseController{
+namespace bms {
+    class DatabaseController {
     public:
-    DatabaseController();
-    ~DatabaseController();
-
-
-
-    void openConnection();
-    
-
+        DatabaseController();
+        ~DatabaseController();
+        void openConnection();
+        std::shared_ptr<sql::Connection> getConnection();
 
     private:
-    sql::mysql::MySQL_Driver* driver;
-    std::unique_ptr<sql::Connection> connection;
-  };
+        sql::mysql::MySQL_Driver* driver;
+        std::shared_ptr<sql::Connection> connection;
+    };
 }

@@ -12,6 +12,7 @@ include_directories(${CMAKE_SOURCE_DIR}/src/headers)
 
 # Specify the source files for the project
 set(SRC_FILES
+    patientController.cpp
     databaseController.cpp
     tcpSocket.cpp
     main.cpp
