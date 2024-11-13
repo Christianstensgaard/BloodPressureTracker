@@ -12,19 +12,12 @@ bms::PatientController::PatientController(DatabaseController* db) {
 
 void bms::PatientController::createPatient(patientModel &model)
 {
-  
-  std::cout << "ssn:" << model.ssn << "\n";
-
-
   try {
         // Connect to the database (replace with your actual MySQL credentials)
         auto con = db->getConnection();
 
         if(con == nullptr)
           printf("con is null");
-
-
-        con->setSchema("bm_db");
 
         // Prepare an SQL insert statement
         std::unique_ptr<sql::PreparedStatement> pstmt(con->prepareStatement(
@@ -43,8 +36,6 @@ void bms::PatientController::createPatient(patientModel &model)
     } catch (sql::SQLException &e) {
         printf("createPation():  %s", e.what());
     }
-
-
 }
 
 void bms::PatientController::getPatients(std::vector<patientModel> &models)
@@ -54,10 +45,9 @@ void bms::PatientController::getPatients(std::vector<patientModel> &models)
     if(db->getConnection() == nullptr)
       std::cerr << "getConnection() is null" << "\n";
 
-    std::unique_ptr<sql::PreparedStatement> pstmt(db->getConnection()->prepareStatement("SELECT * FROM patients"));
+    std::unique_ptr<sql::PreparedStatement> pstmt(db->getConnection()
+      ->prepareStatement("SELECT * FROM patients"));
     std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
-
-    std::cout << "\n";
     while (res->next()) {
 
       patientModel patient;
@@ -65,48 +55,33 @@ void bms::PatientController::getPatients(std::vector<patientModel> &models)
       patient.ssn = res->getString("ssn");
       patient.mail = res->getString("mail");
       patient.name = res->getString("name");
-
-
-      std::cout << "\n";
-      std::cout << "SSN: " << res->getString("ssn") << std::endl;
-      std::cout << "Mail: " << res->getString("mail") << std::endl;
-      std::cout << "Name: " << res->getString("name") << std::endl;
-
       models.push_back(patient);
     }
-
-
   }
   catch(sql::SQLException &e)
   {
     std::cerr << e.what() << '\n';
   }
-  
-
-
-
-
-
 }
 
-void bms::PatientController::getPatient(std::string ssn)
+void bms::PatientController::getPatient(std::string ssn, patientModel &patient)
 {
   try
   {
     if(db->getConnection() == nullptr)
       std::cerr << "getConnection() is null" << "\n";
 
-    std::unique_ptr<sql::PreparedStatement> pstmt(db->getConnection()->prepareStatement("SELECT * FROM patients WHERE ssn = ?"));
+    std::unique_ptr<sql::PreparedStatement> pstmt(db->getConnection()
+      ->prepareStatement("SELECT * FROM patients WHERE ssn = ?"));
     pstmt->setString(1, ssn);
     std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
 
 
     std::cout << "\n";
     while (res->next()) {
-      std::cout << "\n";
-      std::cout << "SSN: " << res->getString("ssn") << std::endl;
-      std::cout << "Mail: " << res->getString("mail") << std::endl;
-      std::cout << "Name: " << res->getString("name") << std::endl;
+      patient.ssn   = res->getString("ssn");
+      patient.mail  = res->getString("mail");
+      patient.name  = res->getString("name");
     }
   }
   catch(sql::SQLException &e)

@@ -15,8 +15,8 @@ namespace bms
   struct measurementModel
   {
     unsigned int id;
-    char ssn[10];
-    char date[19];
+    std::string ssn;
+    std::string date;
 
     unsigned int systolic;
     unsigned int diastolic;

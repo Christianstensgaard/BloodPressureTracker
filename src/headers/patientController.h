@@ -1,6 +1,5 @@
 #pragma once
-#include "dbModels.h"
-#include "databaseController.h"
+#include "bloodMeasurement.h"
 #include <vector>
 namespace bms
 {
@@ -13,10 +12,9 @@ namespace bms
     void createPatient(patientModel &model);
     /// @brief Get patient
     void getPatients(std::vector<patientModel> &models);
-    void getPatient(std::string ssn);
+    void getPatient(std::string ssn, patientModel &patient);
 
-
-    private:
+  private:
     DatabaseController *db;
 
   };

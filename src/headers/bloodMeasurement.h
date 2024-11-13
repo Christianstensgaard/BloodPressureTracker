@@ -1,35 +1,34 @@
 #pragma once
 
 #include <stdio.h>
+#include <vector>
 #include <cstdlib>
 
-
 #include "tcpSocket.h"
+#include "dbModels.h"
 #include "databaseController.h"
+#include "measurementController.h"
 #include "patientController.h"
 #include "threadPool.h"
-#include "dbModels.h"
 
-
-//- common used classes and namespaces
 using namespace bms;
 using std::string;
 
 
+
 //- Reading the Envioment variables for the system
-const char* connectionstring = std::getenv("connectionstring");
-const char* systemApplication = std::getenv("sysApp");
-const char* patientActive = std::getenv("patient_active");
-const char* measureActive = std::getenv("measure_active");
+extern const char* connectionstring;
+extern const char* systemApplication;
+extern const char* patientActive;
+extern const char* measureActive;
+
 
 
 namespace bms{
-  void write(string s){
-    std::cout << s;
-  }
+  //- common used classes and namespaces
 
-  void writeLine(string s){
-    std::cout << s << "\n";
-  }
+  void write(string s);
+
+  void writeLine(string s);
 
 }
