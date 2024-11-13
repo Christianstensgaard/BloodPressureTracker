@@ -1,11 +1,27 @@
 #include "headers/bloodMeasurement.h"
 
-void bms::write(string s)
-{
-  std::cout << s;
-}
 
-void bms::writeLine(string s)
+namespace bms
 {
-  std::cout << s << "\n";
-}
+  const char* connectionstring  = std::getenv("connectionstring");
+  const char* systemApplication = std::getenv("sysApp");
+  const char* patientActive     = std::getenv("patient_active");
+  const char* measureActive     = std::getenv("measure_active");
+
+
+  void write(string s)
+  {
+    std::cout << s;
+  }
+
+  void writeLine(string s)
+  {
+    std::cout << s << "\n";
+  }
+
+
+} // namespace bms
+
+
+
+

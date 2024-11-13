@@ -1,4 +1,5 @@
 #include "headers/bloodMeasurement.h"
+#include <thread>
 
   // Sample JSON as a char*
 const char* json_data = R"(
@@ -23,64 +24,80 @@ PatientController pC(&db);
 MeasurementController mC(&db);
 
 
+
+//- Json handler
+void apiEntry(){
+  writeLine("Entry point, ");
+}
+
+
+
+//- Function to handle doctor input
+int doctorHandle(){
+  return 0;
+}
+
+
+//- Function to handle patient input
+int patientHandler(){
+  return 0;
+}
+
+
+
+
+
+
+
+
+
+
 int main(int argc, char const *argv[])
 {
-  const char* connectionstring = std::getenv("connectionstring");
-  const char* systemApplication = std::getenv("sysApp");
-  const char* patientActive = std::getenv("patient_active");
-  const char* measureActive = std::getenv("measure_active");
+  Task pTask;
+  pTask.run([&pTask](){
+    
+    writeLine("Run()");
 
+    return *(int*) pTask.payLoad;
+  });
 
+  pTask.ok([](){
+    writeLine("Ok()");
+  });
 
-  JsonElement jElement(json_data);
-  std::vector<patientModel> m; 
+  pTask.error([](){
+    writeLine("Error()");
+  });
 
-  patientModel demo = {"22345677", "Bjarne@mail.dk", "Bjarne"};
-  patientModel result;
-
-  writeLine("Testing Patient controller!");
-  printf("\n");
-  db.openConnection();
-  pC.createPatient(demo);
-  pC.getPatient(demo.ssn, result);
-
-
-  writeLine("--------------------------");
-  writeLine("getPatient() result:");
-  writeLine("ssn: "   + result.ssn);
-  writeLine("mail: "  + result.mail);
-  writeLine("name: "  + result.name);
-  writeLine("--------------------------");
-
-
-
-  writeLine("--------------------------");
-  pC.getPatients(m);
-  writeLine("");
-  std::cout << "Array size: " << m.size() << "\n\n";
-
-
-  writeLine("--------------------------------------");
-  writeLine("Testing measurement controller!");
-  measurementModel targetMeasurement = {
-    0,
-    demo.ssn,
-    "2024-11-13 12:30:00",
-    110,
-    30,
-    0
-  };
-
-
-  writeLine("ssn: "   + targetMeasurement.ssn);
-  writeLine("date: "  +targetMeasurement.date);
-  mC.createMeasurement(targetMeasurement);
+  pTask.final([](){
+    writeLine("Final()");
+  });
 
 
 
 
 
-  writeLine("");
-  printf("\n-------------------------------------\n");
+
+
+
+  //-- | Demo function | -- 
+  int value = 0;
+  for (size_t i = 0; i < 10; i++)
+  {
+    if(i%2 == 0){
+      pTask.payLoad = (void*) &value;
+      value = 1;
+      pTask.execute();
+    } else{
+      pTask.payLoad = (void*) &value;
+      value = 0;
+      pTask.execute();
+    }
+
+    writeLine(".");
+     std::this_thread::sleep_for(std::chrono::seconds(1));
+  }
+  
   return 0;
 }

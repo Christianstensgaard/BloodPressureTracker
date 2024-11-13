@@ -129,6 +129,54 @@ BloodPressureTracker/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BloodPressureTracker.dir/build.make CMakeFiles/BloodPressureTracker.dir/build
 .PHONY : BloodPressureTracker/fast
 
+Task.o: Task.cpp.o
+.PHONY : Task.o
+
+# target to build an object file
+Task.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BloodPressureTracker.dir/build.make CMakeFiles/BloodPressureTracker.dir/Task.cpp.o
+.PHONY : Task.cpp.o
+
+Task.i: Task.cpp.i
+.PHONY : Task.i
+
+# target to preprocess a source file
+Task.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BloodPressureTracker.dir/build.make CMakeFiles/BloodPressureTracker.dir/Task.cpp.i
+.PHONY : Task.cpp.i
+
+Task.s: Task.cpp.s
+.PHONY : Task.s
+
+# target to generate assembly for a file
+Task.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BloodPressureTracker.dir/build.make CMakeFiles/BloodPressureTracker.dir/Task.cpp.s
+.PHONY : Task.cpp.s
+
+bloodMeasurement.o: bloodMeasurement.cpp.o
+.PHONY : bloodMeasurement.o
+
+# target to build an object file
+bloodMeasurement.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BloodPressureTracker.dir/build.make CMakeFiles/BloodPressureTracker.dir/bloodMeasurement.cpp.o
+.PHONY : bloodMeasurement.cpp.o
+
+bloodMeasurement.i: bloodMeasurement.cpp.i
+.PHONY : bloodMeasurement.i
+
+# target to preprocess a source file
+bloodMeasurement.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BloodPressureTracker.dir/build.make CMakeFiles/BloodPressureTracker.dir/bloodMeasurement.cpp.i
+.PHONY : bloodMeasurement.cpp.i
+
+bloodMeasurement.s: bloodMeasurement.cpp.s
+.PHONY : bloodMeasurement.s
+
+# target to generate assembly for a file
+bloodMeasurement.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BloodPressureTracker.dir/build.make CMakeFiles/BloodPressureTracker.dir/bloodMeasurement.cpp.s
+.PHONY : bloodMeasurement.cpp.s
+
 databaseController.o: databaseController.cpp.o
 .PHONY : databaseController.o
 
@@ -176,6 +224,30 @@ main.s: main.cpp.s
 main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BloodPressureTracker.dir/build.make CMakeFiles/BloodPressureTracker.dir/main.cpp.s
 .PHONY : main.cpp.s
+
+measurementController.o: measurementController.cpp.o
+.PHONY : measurementController.o
+
+# target to build an object file
+measurementController.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BloodPressureTracker.dir/build.make CMakeFiles/BloodPressureTracker.dir/measurementController.cpp.o
+.PHONY : measurementController.cpp.o
+
+measurementController.i: measurementController.cpp.i
+.PHONY : measurementController.i
+
+# target to preprocess a source file
+measurementController.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BloodPressureTracker.dir/build.make CMakeFiles/BloodPressureTracker.dir/measurementController.cpp.i
+.PHONY : measurementController.cpp.i
+
+measurementController.s: measurementController.cpp.s
+.PHONY : measurementController.s
+
+# target to generate assembly for a file
+measurementController.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BloodPressureTracker.dir/build.make CMakeFiles/BloodPressureTracker.dir/measurementController.cpp.s
+.PHONY : measurementController.cpp.s
 
 patientController.o: patientController.cpp.o
 .PHONY : patientController.o
@@ -234,12 +306,21 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... BloodPressureTracker"
+	@echo "... Task.o"
+	@echo "... Task.i"
+	@echo "... Task.s"
+	@echo "... bloodMeasurement.o"
+	@echo "... bloodMeasurement.i"
+	@echo "... bloodMeasurement.s"
 	@echo "... databaseController.o"
 	@echo "... databaseController.i"
 	@echo "... databaseController.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... measurementController.o"
+	@echo "... measurementController.i"
+	@echo "... measurementController.s"
 	@echo "... patientController.o"
 	@echo "... patientController.i"
 	@echo "... patientController.s"

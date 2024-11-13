@@ -1,7 +1,7 @@
-CMakeFiles/BloodPressureTracker.dir/patientController.cpp.o: \
- /mnt/c/git/BloodPressureTracker/src/patientController.cpp \
+CMakeFiles/BloodPressureTracker.dir/measurementController.cpp.o: \
+ /mnt/c/git/BloodPressureTracker/src/measurementController.cpp \
  /usr/include/stdc-predef.h \
- /mnt/c/git/BloodPressureTracker/src/headers/patientController.h \
+ /mnt/c/git/BloodPressureTracker/src/headers/measurementController.h \
  /mnt/c/git/BloodPressureTracker/src/headers/bloodMeasurement.h \
  /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
@@ -266,6 +266,6 @@ CMakeFiles/BloodPressureTracker.dir/patientController.cpp.o: \
  /usr/include/cppconn/exception.h \
  /usr/include/cppconn/prepared_statement.h \
  /usr/include/cppconn/statement.h \
- /mnt/c/git/BloodPressureTracker/src/headers/measurementController.h \
+ /mnt/c/git/BloodPressureTracker/src/headers/patientController.h \
  /mnt/c/git/BloodPressureTracker/src/headers/Task.h \
  /mnt/c/git/BloodPressureTracker/src/headers/threadPool.h

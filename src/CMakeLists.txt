@@ -13,6 +13,7 @@ include_directories(${CMAKE_SOURCE_DIR}/src/headers)
 # Specify the source files for the project
 set(SRC_FILES
     bloodMeasurement.cpp
+    Task.cpp
     databaseController.cpp
     patientController.cpp
     measurementController.cpp

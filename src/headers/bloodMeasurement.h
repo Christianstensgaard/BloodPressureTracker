@@ -9,6 +9,7 @@
 #include "databaseController.h"
 #include "measurementController.h"
 #include "patientController.h"
+#include "Task.h"
 #include "threadPool.h"
 
 using namespace bms;
