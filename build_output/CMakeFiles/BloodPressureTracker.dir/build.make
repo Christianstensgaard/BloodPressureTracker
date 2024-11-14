@@ -97,10 +97,24 @@ CMakeFiles/BloodPressureTracker.dir/Task.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/BloodPressureTracker.dir/Task.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/git/BloodPressureTracker/src/Task.cpp -o CMakeFiles/BloodPressureTracker.dir/Task.cpp.s
 
+CMakeFiles/BloodPressureTracker.dir/threadPool.cpp.o: CMakeFiles/BloodPressureTracker.dir/flags.make
+CMakeFiles/BloodPressureTracker.dir/threadPool.cpp.o: /mnt/c/git/BloodPressureTracker/src/threadPool.cpp
+CMakeFiles/BloodPressureTracker.dir/threadPool.cpp.o: CMakeFiles/BloodPressureTracker.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/git/BloodPressureTracker/build_output/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/BloodPressureTracker.dir/threadPool.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BloodPressureTracker.dir/threadPool.cpp.o -MF CMakeFiles/BloodPressureTracker.dir/threadPool.cpp.o.d -o CMakeFiles/BloodPressureTracker.dir/threadPool.cpp.o -c /mnt/c/git/BloodPressureTracker/src/threadPool.cpp
+
+CMakeFiles/BloodPressureTracker.dir/threadPool.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/BloodPressureTracker.dir/threadPool.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/git/BloodPressureTracker/src/threadPool.cpp > CMakeFiles/BloodPressureTracker.dir/threadPool.cpp.i
+
+CMakeFiles/BloodPressureTracker.dir/threadPool.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/BloodPressureTracker.dir/threadPool.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/git/BloodPressureTracker/src/threadPool.cpp -o CMakeFiles/BloodPressureTracker.dir/threadPool.cpp.s
+
 CMakeFiles/BloodPressureTracker.dir/databaseController.cpp.o: CMakeFiles/BloodPressureTracker.dir/flags.make
 CMakeFiles/BloodPressureTracker.dir/databaseController.cpp.o: /mnt/c/git/BloodPressureTracker/src/databaseController.cpp
 CMakeFiles/BloodPressureTracker.dir/databaseController.cpp.o: CMakeFiles/BloodPressureTracker.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/git/BloodPressureTracker/build_output/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/BloodPressureTracker.dir/databaseController.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/git/BloodPressureTracker/build_output/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/BloodPressureTracker.dir/databaseController.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BloodPressureTracker.dir/databaseController.cpp.o -MF CMakeFiles/BloodPressureTracker.dir/databaseController.cpp.o.d -o CMakeFiles/BloodPressureTracker.dir/databaseController.cpp.o -c /mnt/c/git/BloodPressureTracker/src/databaseController.cpp
 
 CMakeFiles/BloodPressureTracker.dir/databaseController.cpp.i: cmake_force
@@ -114,7 +128,7 @@ CMakeFiles/BloodPressureTracker.dir/databaseController.cpp.s: cmake_force
 CMakeFiles/BloodPressureTracker.dir/patientController.cpp.o: CMakeFiles/BloodPressureTracker.dir/flags.make
 CMakeFiles/BloodPressureTracker.dir/patientController.cpp.o: /mnt/c/git/BloodPressureTracker/src/patientController.cpp
 CMakeFiles/BloodPressureTracker.dir/patientController.cpp.o: CMakeFiles/BloodPressureTracker.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/git/BloodPressureTracker/build_output/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/BloodPressureTracker.dir/patientController.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/git/BloodPressureTracker/build_output/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/BloodPressureTracker.dir/patientController.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BloodPressureTracker.dir/patientController.cpp.o -MF CMakeFiles/BloodPressureTracker.dir/patientController.cpp.o.d -o CMakeFiles/BloodPressureTracker.dir/patientController.cpp.o -c /mnt/c/git/BloodPressureTracker/src/patientController.cpp
 
 CMakeFiles/BloodPressureTracker.dir/patientController.cpp.i: cmake_force
@@ -128,7 +142,7 @@ CMakeFiles/BloodPressureTracker.dir/patientController.cpp.s: cmake_force
 CMakeFiles/BloodPressureTracker.dir/measurementController.cpp.o: CMakeFiles/BloodPressureTracker.dir/flags.make
 CMakeFiles/BloodPressureTracker.dir/measurementController.cpp.o: /mnt/c/git/BloodPressureTracker/src/measurementController.cpp
 CMakeFiles/BloodPressureTracker.dir/measurementController.cpp.o: CMakeFiles/BloodPressureTracker.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/git/BloodPressureTracker/build_output/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/BloodPressureTracker.dir/measurementController.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/git/BloodPressureTracker/build_output/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/BloodPressureTracker.dir/measurementController.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BloodPressureTracker.dir/measurementController.cpp.o -MF CMakeFiles/BloodPressureTracker.dir/measurementController.cpp.o.d -o CMakeFiles/BloodPressureTracker.dir/measurementController.cpp.o -c /mnt/c/git/BloodPressureTracker/src/measurementController.cpp
 
 CMakeFiles/BloodPressureTracker.dir/measurementController.cpp.i: cmake_force
@@ -142,7 +156,7 @@ CMakeFiles/BloodPressureTracker.dir/measurementController.cpp.s: cmake_force
 CMakeFiles/BloodPressureTracker.dir/tcpSocket.cpp.o: CMakeFiles/BloodPressureTracker.dir/flags.make
 CMakeFiles/BloodPressureTracker.dir/tcpSocket.cpp.o: /mnt/c/git/BloodPressureTracker/src/tcpSocket.cpp
 CMakeFiles/BloodPressureTracker.dir/tcpSocket.cpp.o: CMakeFiles/BloodPressureTracker.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/git/BloodPressureTracker/build_output/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/BloodPressureTracker.dir/tcpSocket.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/git/BloodPressureTracker/build_output/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/BloodPressureTracker.dir/tcpSocket.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BloodPressureTracker.dir/tcpSocket.cpp.o -MF CMakeFiles/BloodPressureTracker.dir/tcpSocket.cpp.o.d -o CMakeFiles/BloodPressureTracker.dir/tcpSocket.cpp.o -c /mnt/c/git/BloodPressureTracker/src/tcpSocket.cpp
 
 CMakeFiles/BloodPressureTracker.dir/tcpSocket.cpp.i: cmake_force
@@ -156,7 +170,7 @@ CMakeFiles/BloodPressureTracker.dir/tcpSocket.cpp.s: cmake_force
 CMakeFiles/BloodPressureTracker.dir/main.cpp.o: CMakeFiles/BloodPressureTracker.dir/flags.make
 CMakeFiles/BloodPressureTracker.dir/main.cpp.o: /mnt/c/git/BloodPressureTracker/src/main.cpp
 CMakeFiles/BloodPressureTracker.dir/main.cpp.o: CMakeFiles/BloodPressureTracker.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/git/BloodPressureTracker/build_output/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/BloodPressureTracker.dir/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/git/BloodPressureTracker/build_output/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/BloodPressureTracker.dir/main.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BloodPressureTracker.dir/main.cpp.o -MF CMakeFiles/BloodPressureTracker.dir/main.cpp.o.d -o CMakeFiles/BloodPressureTracker.dir/main.cpp.o -c /mnt/c/git/BloodPressureTracker/src/main.cpp
 
 CMakeFiles/BloodPressureTracker.dir/main.cpp.i: cmake_force
@@ -171,6 +185,7 @@ CMakeFiles/BloodPressureTracker.dir/main.cpp.s: cmake_force
 BloodPressureTracker_OBJECTS = \
 "CMakeFiles/BloodPressureTracker.dir/bloodMeasurement.cpp.o" \
 "CMakeFiles/BloodPressureTracker.dir/Task.cpp.o" \
+"CMakeFiles/BloodPressureTracker.dir/threadPool.cpp.o" \
 "CMakeFiles/BloodPressureTracker.dir/databaseController.cpp.o" \
 "CMakeFiles/BloodPressureTracker.dir/patientController.cpp.o" \
 "CMakeFiles/BloodPressureTracker.dir/measurementController.cpp.o" \
@@ -182,6 +197,7 @@ BloodPressureTracker_EXTERNAL_OBJECTS =
 
 BloodPressureTracker: CMakeFiles/BloodPressureTracker.dir/bloodMeasurement.cpp.o
 BloodPressureTracker: CMakeFiles/BloodPressureTracker.dir/Task.cpp.o
+BloodPressureTracker: CMakeFiles/BloodPressureTracker.dir/threadPool.cpp.o
 BloodPressureTracker: CMakeFiles/BloodPressureTracker.dir/databaseController.cpp.o
 BloodPressureTracker: CMakeFiles/BloodPressureTracker.dir/patientController.cpp.o
 BloodPressureTracker: CMakeFiles/BloodPressureTracker.dir/measurementController.cpp.o
@@ -190,7 +206,7 @@ BloodPressureTracker: CMakeFiles/BloodPressureTracker.dir/main.cpp.o
 BloodPressureTracker: CMakeFiles/BloodPressureTracker.dir/build.make
 BloodPressureTracker: /usr/lib/x86_64-linux-gnu/libmysqlcppconn.so
 BloodPressureTracker: CMakeFiles/BloodPressureTracker.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/c/git/BloodPressureTracker/build_output/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable BloodPressureTracker"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/c/git/BloodPressureTracker/build_output/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable BloodPressureTracker"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/BloodPressureTracker.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

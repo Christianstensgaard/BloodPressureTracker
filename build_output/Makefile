@@ -297,6 +297,30 @@ tcpSocket.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BloodPressureTracker.dir/build.make CMakeFiles/BloodPressureTracker.dir/tcpSocket.cpp.s
 .PHONY : tcpSocket.cpp.s
 
+threadPool.o: threadPool.cpp.o
+.PHONY : threadPool.o
+
+# target to build an object file
+threadPool.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BloodPressureTracker.dir/build.make CMakeFiles/BloodPressureTracker.dir/threadPool.cpp.o
+.PHONY : threadPool.cpp.o
+
+threadPool.i: threadPool.cpp.i
+.PHONY : threadPool.i
+
+# target to preprocess a source file
+threadPool.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BloodPressureTracker.dir/build.make CMakeFiles/BloodPressureTracker.dir/threadPool.cpp.i
+.PHONY : threadPool.cpp.i
+
+threadPool.s: threadPool.cpp.s
+.PHONY : threadPool.s
+
+# target to generate assembly for a file
+threadPool.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BloodPressureTracker.dir/build.make CMakeFiles/BloodPressureTracker.dir/threadPool.cpp.s
+.PHONY : threadPool.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -327,6 +351,9 @@ help:
 	@echo "... tcpSocket.o"
 	@echo "... tcpSocket.i"
 	@echo "... tcpSocket.s"
+	@echo "... threadPool.o"
+	@echo "... threadPool.i"
+	@echo "... threadPool.s"
 .PHONY : help
 
 

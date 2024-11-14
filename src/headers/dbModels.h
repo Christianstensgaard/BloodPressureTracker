@@ -52,6 +52,10 @@ namespace bms
       json = data;
     }
 
+    JsonElement(){
+      json = nullptr;
+    } 
+
 
     struct Attribute
     {

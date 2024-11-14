@@ -4,7 +4,7 @@
   "documentation" : { },
   "id" : 1,
   "lastModifiedAgent" : "structurizr-ui",
-  "lastModifiedDate" : "2024-11-12T16:36:46Z",
+  "lastModifiedDate" : "2024-11-14T19:39:42Z",
   "model" : {
     "people" : [ {
       "description" : "A patient who enters blood pressure measurements",
@@ -316,7 +316,7 @@
   "views" : {
     "componentViews" : [ {
       "automaticLayout" : {
-        "applied" : true,
+        "applied" : false,
         "edgeSeparation" : 0,
         "implementation" : "Graphviz",
         "nodeSeparation" : 300,
@@ -325,30 +325,26 @@
         "vertices" : false
       },
       "containerId" : "6",
-      "dimensions" : {
-        "height" : 1300,
-        "width" : 3100
-      },
       "elements" : [ {
         "id" : "4",
-        "x" : 2450,
-        "y" : 499
+        "x" : 0,
+        "y" : 0
       }, {
         "id" : "5",
-        "x" : 200,
-        "y" : 199
+        "x" : 0,
+        "y" : 0
       }, {
         "id" : "7",
-        "x" : 950,
-        "y" : 499
+        "x" : 0,
+        "y" : 0
       }, {
         "id" : "8",
-        "x" : 1700,
-        "y" : 499
+        "x" : 0,
+        "y" : 0
       }, {
         "id" : "12",
-        "x" : 200,
-        "y" : 799
+        "x" : 0,
+        "y" : 0
       } ],
       "externalContainerBoundariesVisible" : false,
       "key" : "PatientService",
@@ -379,23 +375,23 @@
       },
       "elements" : [ {
         "id" : "4",
-        "x" : 2450,
+        "x" : 2449,
         "y" : 499
       }, {
         "id" : "5",
-        "x" : 200,
+        "x" : 199,
         "y" : 199
       }, {
         "id" : "12",
-        "x" : 200,
+        "x" : 199,
         "y" : 799
       }, {
         "id" : "14",
-        "x" : 950,
+        "x" : 949,
         "y" : 499
       }, {
         "id" : "15",
-        "x" : 1700,
+        "x" : 1699,
         "y" : 499
       } ],
       "externalContainerBoundariesVisible" : false,
@@ -413,7 +409,7 @@
     } ],
     "configuration" : {
       "branding" : { },
-      "lastSavedView" : "MeasurementService",
+      "lastSavedView" : "BloodPressureSystem",
       "metadataSymbols" : "SquareBrackets",
       "styles" : {
         "elements" : [ {
@@ -461,32 +457,32 @@
       },
       "elements" : [ {
         "id" : "1",
-        "x" : 199,
-        "y" : 200
+        "x" : 200,
+        "y" : 199
       }, {
         "id" : "2",
-        "x" : 199,
-        "y" : 900
+        "x" : 200,
+        "y" : 899
       }, {
         "id" : "4",
-        "x" : 2399,
-        "y" : 600
+        "x" : 2400,
+        "y" : 599
       }, {
         "id" : "5",
-        "x" : 899,
-        "y" : 300
+        "x" : 900,
+        "y" : 299
       }, {
         "id" : "6",
-        "x" : 1649,
-        "y" : 300
+        "x" : 1650,
+        "y" : 299
       }, {
         "id" : "12",
-        "x" : 899,
-        "y" : 900
+        "x" : 900,
+        "y" : 899
       }, {
         "id" : "13",
-        "x" : 1649,
-        "y" : 900
+        "x" : 1650,
+        "y" : 899
       } ],
       "externalSoftwareSystemBoundariesVisible" : false,
       "key" : "BloodPressureSystem",

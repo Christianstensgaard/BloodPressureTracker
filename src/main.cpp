@@ -29,11 +29,11 @@
   const char* json_createPatient = R"(
   {
     "patient": {
-      "type": "c",
-      "action":"createPatient",
-      "name" : "Hans Petersen",
-      "mail" : "hansP@outlook.dk",
-      "ssn" :  "002020201",
+      "type":   "patient",
+      "action": "createPatient",
+      "name" :  "Hans Petersen",
+      "mail" :  "hansP@outlook.dk",
+      "ssn" :   "002020201",
     }
   }
   )";
@@ -45,9 +45,9 @@ MeasurementController mC(&db);
 
 
 /// @brief Handle Raw input from network-stream
-/// @param payload 
+/// @param payload
 void requestHandler(void* payload){
-  //- Unsure what this should be doing. 
+  //- Unsure what this should be doing.
   //- 14-11
 
 }
@@ -65,91 +65,87 @@ bool stringEqual(const char* t1, const char* t2){
   return true;
 }
 
-void ParseJsonAndCreateTask(){
-  //- Create the char* to json format. 
-
-  JsonElement json(json_getPatient);
-  json.handleRawData(); //- Create Key,value pairs for the elements
-
-
-  auto res = json.find("action");
-
-  if(res == nullptr)
-    return;
- 
-  if(stringEqual("createPatient", res->value))
-  {
-    std::cout << "postMeasurement - Activated" << "\n";
-
-    auto task = Task().create("createPatient")
-      -> run([&json](){
-
-        patientModel patient;
-        patient.ssn  = json.find("ssn")->value;
-        patient.name = json.find("name")->value;
-        patient.mail = json.find("mail")->value;
-
-
-        pC.createPatient(patient);
-        return 0;
-      }) -> error([](){
-        std::cout << "Error creating patient";
-      });
-
-      task->execute();
-    return;
-  }
-
-  if(stringEqual("getPatient", res->value)){
-    std::cout << "getPatient - Activated" << '\n';
-
-    auto task = Task().create("getPatient")
-     -> run([&json](){
-        auto ssn = json.find("ssn");
-        std::cout << ssn->value << "\n\n";
-
-        if(ssn == nullptr)
-          return 1;
-
-        patientModel result;
-        pC.getPatient(ssn->value, result);
-
-        std::cout << "-------------------------------------------------------\n";
-        std::cout << "|\tName: " << result.name << "\n|\tMail: " << result.mail << "\n|\tssn: " << result.ssn << "\n";
-        std::cout << "-------------------------------------------------------\n";
-
-        return 0;
-     }) -> error([](){
-        std::cout << "\nError getting patient\n";
-
-     }) -> final([](){
-        std::cout << "Called in the end\n";
-     });
-
-     task->execute();
-    return;
-  }
-
-}
 
 
 int main(int argc, char const *argv[])
 {
   
-  //- Open Connection to db
+
+
+
+
   if(!db.openConnection())
   {
     writeLine("Failed to open connection");
     return 0;
   }
 
-  writeLine("\n------------------------------------\n");
-  //- Setup features Enable/Disable
-  ParseJsonAndCreateTask();
+
+
+
+
+
+
+  JsonElement stream(json_getPatient);
+
+
+  createTask()
+  ->run([&stream](){
+    stream.handleRawData();
+
+    if(stringEqual("getPatient", stream.find("action")->value)){
+      printf("getPatient Starting!\n");
+      auto ssn = stream.find("ssn");
+      printf("%s\n", ssn->value);
+
+
+      for (size_t i = 0; i < 20000; i++)
+      {
+        printf(".");
+      }
+    }
+    return 1;
+  })
+  -> error([](){
+    printf("Error!");
+  })->invoke();
+
+
+
+  createTask()
+  ->run([&stream](){
+    stream.handleRawData();
+
+    if(stringEqual("getPatient", stream.find("action")->value)){
+      printf("getPatient Starting!\n");
+      auto ssn = stream.find("ssn");
+      printf("%s\n", ssn->value);
+
+
+      for (size_t i = 0; i < 20000; i++)
+      {
+        printf("-");
+      }
+    }
+    return 1;
+  })
+  -> error([](){
+    printf("Error!");
+  })->invoke() ->await();
+  
+  
+
+  printf("Will first run then the other is done!");
+
+
+
 
   while(IsRunning){
-
+    //- API CALL SHOULD BE PALCED HERE
   }
+
+
+  std::this_thread::sleep_for(std::chrono::seconds(5));
 
   return 0;
 }

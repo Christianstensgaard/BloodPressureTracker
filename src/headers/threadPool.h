@@ -1,82 +1,25 @@
 #pragma once
 #include <pthread.h>
+#include <functional>
 namespace bms
 {
-  class Thread{
-
-
+  class Thread {
     public:
-    template <typename Func>
-    void start(Func function) {
-        // Store the function pointer as a void* (for internal use)
-        threadEntry = reinterpret_cast<void*>(function);
+        // Constructor that accepts a std::function instead of a raw function pointer
+        explicit Thread(std::function<void()> func);
 
-      runFunction();
-    }
+        // Start the thread
+        void start();
 
-
-    //- Create some type of promise, and callback, for async
-
-
-    int addToThreadPool(){
-      // do nothing here yet
-
-      return 0;
-    }
-    
-
-    void runFunction(){
-      if (threadEntry) {
-            // Cast `threadEntry` back to the correct function pointer type and call it
-            auto func = reinterpret_cast<void (*)()>(threadEntry);
-            func();
-        }
-    }
-
-
-
+        // Join the thread
+        void join();
 
     private:
-    unsigned int threadId;
-    void* threadEntry;
-  };
+        static void* threadFunction(void* arg);
 
-  class Thread_engine{
-    #define POL_SIZE 10
-
-    public:
-    Thread_engine(){
-    }
-
-    ~Thread_engine(){
-
-    }
-
-    void init(){
-      printf("T_start()\n");
-    }
-
-    private:
-    int position_end;
-    Thread pool[POL_SIZE];
-    pthread_t runners[4];
-    
-  };
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
+        std::function<void()> func_;  // Store the function to execute in the thread
+        pthread_t thread_id;
+    };
 
 } // namespace bmt
 

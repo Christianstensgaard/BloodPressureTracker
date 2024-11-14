@@ -1,11 +1,20 @@
+
+
 #include "headers/Task.h"
 namespace bms{
   Task::Task() : okFunction(nullptr), errorFunction(nullptr), finalFunction(nullptr) {}
 
+  Task *Task::invoke(){
+    // Create a Thread instance using manual new, suitable for C++11
+    t = std::unique_ptr<Thread>(new Thread([this]() { this->execute(); }));
+    t->start();  // Start the thread
+    return this;
+  }
 
-  Task *Task::create(std::string taskName){
-    //- TODO Allocation and Creation of Task. 
-
+  Task *Task::await(){
+    if(t){
+        t->join();
+    }
     return this;
   }
 
@@ -29,29 +38,31 @@ namespace bms{
     return this;
   }
 
-   void Task::execute() {
-      try {
-          int result = taskFunction();
+    void Task::execute() {
+        try {
+            int result = taskFunction();
 
-          if (result == 0 && okFunction) {
-              okFunction();
-          } else if (result != 0 && errorFunction) {
-              errorFunction();
-          }
-      } catch (const std::exception& e) {
-          std::cerr << "Error occurred: " << e.what() << std::endl;
-          if (errorFunction) {
-              errorFunction();
-          }
-      } catch (...) {
-          std::cerr << "Unknown error occurred." << std::endl;
-          if (errorFunction) {
-              errorFunction();
-          }
-      }
+            if (result == 0 && okFunction) {
+                okFunction();
+            } else if (result != 0 && errorFunction) {
+                errorFunction();
+            }
+        } catch (const std::exception& e) {
+            std::cerr << "Error occurred: " << e.what() << std::endl;
+            if (errorFunction) {
+                errorFunction();
+            }
+        } catch (...) {
+            std::cerr << "Unknown error occurred." << std::endl;
+            if (errorFunction) {
+                errorFunction();
+            }
+        }
 
-      if (finalFunction) {
-          finalFunction();
-      }
+        if (finalFunction) {
+            finalFunction();
+        }
+
+
     }
 }

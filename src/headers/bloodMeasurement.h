@@ -3,6 +3,12 @@
 #include <stdio.h>
 #include <vector>
 #include <cstdlib>
+#include <thread>
+#include <chrono>
+#include <functional>
+#include <string>
+#include <memory>
+#include <thread>
 
 #include "tcpSocket.h"
 #include "dbModels.h"
@@ -30,5 +36,7 @@ namespace bms{
 
   void write(string s);
   void writeLine(string s);
+
+  Task *createTask();
 
 }

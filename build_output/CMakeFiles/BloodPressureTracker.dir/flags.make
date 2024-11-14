@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/mnt/c/git/BloodPressureTracker/src/src/headers
 
-CXX_FLAGS = -std=gnu++11
+CXX_FLAGS = -g -O0 -std=gnu++11
 

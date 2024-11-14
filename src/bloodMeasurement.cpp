@@ -10,6 +10,24 @@ namespace bms
   bool IsRunning = false;
 
 
+  Task tasks[50];
+  JsonElement payload[50];
+  static int ti = 0;
+
+  static bool lock = false;
+
+  void lockTask(){
+    lock = true;
+  }
+
+  void UnlockTask(){
+    lock = false;
+  }
+
+  bool isLocked(){
+    return lock;
+  }
+
   void write(string s)
   {
     std::cout << s;
@@ -21,6 +39,13 @@ namespace bms
   }
 
 
+  Task *createTask(){
+    if(ti >= 50)
+      ti = 0;
+    return &tasks[ti++];
+  }
+
+  
 } // namespace bms
 
 

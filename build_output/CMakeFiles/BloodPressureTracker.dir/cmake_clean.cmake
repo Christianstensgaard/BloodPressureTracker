@@ -15,6 +15,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/BloodPressureTracker.dir/patientController.cpp.o.d"
   "CMakeFiles/BloodPressureTracker.dir/tcpSocket.cpp.o"
   "CMakeFiles/BloodPressureTracker.dir/tcpSocket.cpp.o.d"
+  "CMakeFiles/BloodPressureTracker.dir/threadPool.cpp.o"
+  "CMakeFiles/BloodPressureTracker.dir/threadPool.cpp.o.d"
 )
 
 # Per-language clean rules from dependency scanning.
