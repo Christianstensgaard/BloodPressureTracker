@@ -13,6 +13,7 @@ namespace bms
   Task tasks[50];
   JsonElement payload[50];
   static int ti = 0;
+  static int ji = 0;
 
   static bool lock = false;
 
@@ -43,6 +44,31 @@ namespace bms
     if(ti >= 50)
       ti = 0;
     return &tasks[ti++];
+  }
+
+  void createJson(const char* rawString, int &id){
+    if(ji >= 50)
+      ji = 0;
+    payload[ji] = JsonElement(rawString);
+    payload[ji].handleRawData();
+    id = ji++;
+  }
+  
+  
+  JsonElement *getJson(int id){
+    if(id >= 50)
+      return nullptr;
+    return &payload[id];
+  }
+
+
+
+  Task *createTask(int bufferID){
+    if(ti >= 50)
+      ti = 0;
+
+    tasks[ti].id = bufferID;
+    return &tasks[ti++];      
   }
 
   

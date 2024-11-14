@@ -37,6 +37,11 @@ namespace bms{
   void write(string s);
   void writeLine(string s);
 
+  void createJson(const char* rawString, int &id);
+  JsonElement *getJson(int id);
+  
+
   Task *createTask();
+  Task *createTask(int bufferID);
 
 }

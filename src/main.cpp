@@ -65,6 +65,23 @@ bool stringEqual(const char* t1, const char* t2){
   return true;
 }
 
+void DemoPointerTest(){
+  int id;
+  createJson(json_getPatient, id);
+
+  Task *pTask = createTask(id)
+  ->run ([id](){
+
+    std::cout << "id: " << id << "\n";
+    JsonElement *pJson = getJson(id);
+
+    auto ssn = pJson->find("ssn");
+
+    std::cout << "ssn: " << ssn->value << "\n";
+
+    return 0;
+  })->invoke()->await();
+}
 
 
 int main(int argc, char const *argv[])
@@ -81,63 +98,7 @@ int main(int argc, char const *argv[])
   }
 
 
-
-
-
-
-
-  JsonElement stream(json_getPatient);
-
-
-  createTask()
-  ->run([&stream](){
-    stream.handleRawData();
-
-    if(stringEqual("getPatient", stream.find("action")->value)){
-      printf("getPatient Starting!\n");
-      auto ssn = stream.find("ssn");
-      printf("%s\n", ssn->value);
-
-
-      for (size_t i = 0; i < 20000; i++)
-      {
-        printf(".");
-      }
-    }
-    return 1;
-  })
-  -> error([](){
-    printf("Error!");
-  })->invoke();
-
-
-
-  createTask()
-  ->run([&stream](){
-    stream.handleRawData();
-
-    if(stringEqual("getPatient", stream.find("action")->value)){
-      printf("getPatient Starting!\n");
-      auto ssn = stream.find("ssn");
-      printf("%s\n", ssn->value);
-
-
-      for (size_t i = 0; i < 20000; i++)
-      {
-        printf("-");
-      }
-    }
-    return 1;
-  })
-  -> error([](){
-    printf("Error!");
-  })->invoke() ->await();
-  
-  
-
-  printf("Will first run then the other is done!");
-
-
+  DemoPointerTest();
 
 
   while(IsRunning){

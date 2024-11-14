@@ -56,6 +56,9 @@ namespace bms
       json = nullptr;
     } 
 
+    void LoadString(const char* data){
+      json = data;
+    }
 
     struct Attribute
     {
