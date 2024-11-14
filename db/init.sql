@@ -1,10 +1,6 @@
--- Create the database
 CREATE DATABASE bm_db;
-
--- Use the database
 USE bm_db;
 
--- Create the patients table
 CREATE TABLE patients (
     ssn CHAR(10) NOT NULL,
     mail VARCHAR(128) NOT NULL,
@@ -12,7 +8,6 @@ CREATE TABLE patients (
     PRIMARY KEY (ssn)
 );
 
--- Create the measurements table
 CREATE TABLE measurements (
     id INT UNSIGNED AUTO_INCREMENT,
     ssn CHAR(10) NOT NULL,
@@ -24,11 +19,9 @@ CREATE TABLE measurements (
     FOREIGN KEY (ssn) REFERENCES patients(ssn) ON DELETE CASCADE
 );
 
--- Optional: Add indexes to improve performance on frequently queried columns
 CREATE INDEX idx_measurement_date ON measurements(date);
 CREATE INDEX idx_measurement_ssn ON measurements(ssn);
 
--- Optional: Add some sample data to test the schema
 INSERT INTO patients (ssn, mail, name) VALUES 
 (   '1234567590', 
     'Mette@outlook.com', 
@@ -47,7 +40,24 @@ INSERT INTO patients (ssn, mail, name) VALUES
     'Jens løg Hansen'
 );
 
+INSERT INTO patients (ssn, mail, name) VALUES 
+(   '1234567453', 
+    'Janni@hotmail.com', 
+    'Janni Sloth Nielsen'
+);
+
+INSERT INTO patients (ssn, mail, name) VALUES 
+(   '1236567453', 
+    'Janni@hotmail.com', 
+    'Tina Sloth Nielsen'
+);
+
 INSERT INTO measurements (ssn, date, systolic, diastolic, seen) 
 VALUES 
 ('1234567891', '2023-11-07 12:30:00', 120, 80, 1),
-('1234567893', '2023-11-08 14:15:00', 130, 85, 0);
+('1234567893', '2023-11-08 14:15:00', 144, 75, 0);
+('1236567453', '2023-11-08 14:15:00', 130, 65, 0);
+('1234567893', '2023-11-08 14:15:00', 155, 55, 0);
+('1234567893', '2023-11-08 14:15:00', 137, 45, 0);
+('1234567453', '2023-11-08 14:15:00', 233, 35, 0);
+('1234567590', '2023-11-08 14:15:00', 139, 35, 0);

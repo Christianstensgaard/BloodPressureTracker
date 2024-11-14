@@ -1,14 +1,15 @@
 version: '3.8'
 
 services:
-  jenkins:
-    image: jenkins/jenkins:lts    # Use the LTS version of Jenkins
-    container_name: jenkins_server
-    ports:
-      - "8080:8080"               # Jenkins Web UI
-      - "50000:50000"             # Jenkins agent connection port
-    expose:
-      - 8080:8080
+  bloodPreasureMeasurement_test:
+    container_name: BPMS_test
 
-volumes:
-  jenkins_home:
+
+
+
+# What should this contains. 
+#----------------------
+# Build the solution
+# Test the solution
+# Deploy solution
+#----------------------
