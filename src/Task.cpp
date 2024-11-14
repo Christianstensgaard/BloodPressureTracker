@@ -2,20 +2,31 @@
 namespace bms{
   Task::Task() : okFunction(nullptr), errorFunction(nullptr), finalFunction(nullptr) {}
 
-  void Task::ok(std::function<void()> handler) {
+
+  Task *Task::create(std::string taskName){
+    //- TODO Allocation and Creation of Task. 
+
+    return this;
+  }
+
+  Task *Task::ok(std::function<void()> handler) {
       okFunction = handler;
+      return this;
   }
 
-  void Task::error(std::function<void()> handler) {
+  Task *Task::error(std::function<void()> handler) {
       errorFunction = handler;
+      return this;
   }
 
-  void Task::run(std::function<int()> handler){
+  Task *Task::run(std::function<int()> handler){
     taskFunction = handler;
+    return this;
   }
 
-  void Task::final(std::function<void()> handler) {
+  Task *Task::final(std::function<void()> handler) {
     finalFunction = handler;
+    return this;
   }
 
    void Task::execute() {

@@ -15,7 +15,7 @@ namespace bms {
         DatabaseController();
         ~DatabaseController();
         std::unique_ptr<sql::ResultSet> executeQuery(const std::string &query);
-        void openConnection();
+        bool openConnection();
         std::shared_ptr<sql::Connection> getConnection();
 
     private:

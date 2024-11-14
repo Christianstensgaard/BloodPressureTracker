@@ -3,15 +3,17 @@
 #include <functional>
 
 namespace bms{
-  class Task{
+
+    class Task{
     public:
     using TaskFunction = std::function<int()>;
     Task();
-    void run(std::function<int()> handler);
-    void ok(std::function<void()> handler);
-    void error(std::function<void()> handler);
-    void final(std::function<void()> handler);
-    void execute();
+    Task *create(std::string taskName);
+    Task *run(std::function<int()> handler);
+    Task *ok(std::function<void()> handler);
+    Task *error(std::function<void()> handler);
+    Task *final(std::function<void()> handler);
+    void  execute();
 
 
     void* payLoad;

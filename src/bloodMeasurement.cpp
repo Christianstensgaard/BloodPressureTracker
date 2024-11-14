@@ -7,6 +7,7 @@ namespace bms
   const char* systemApplication = std::getenv("sysApp");
   const char* patientActive     = std::getenv("patient_active");
   const char* measureActive     = std::getenv("measure_active");
+  bool IsRunning = false;
 
 
   void write(string s)

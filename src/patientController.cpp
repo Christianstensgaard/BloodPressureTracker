@@ -77,6 +77,8 @@ void bms::PatientController::getPatient(std::string ssn, patientModel &patient)
     std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
 
 
+
+
     std::cout << "\n";
     while (res->next()) {
       patient.ssn   = res->getString("ssn");

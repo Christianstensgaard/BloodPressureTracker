@@ -2,15 +2,13 @@
 
 bms::DatabaseController::DatabaseController()
 {
-  printf("DatabaseControllerInstance()");
   driver = nullptr;
   connection = nullptr;
 }
 
 bms::DatabaseController::~DatabaseController()
 {
-  printf("DatabaseController() Destroyed");
-  
+  connection->close();
 }
 
 
@@ -30,8 +28,7 @@ std::unique_ptr<sql::ResultSet> bms::DatabaseController::executeQuery(const std:
     }
 }
 
-void bms::DatabaseController::openConnection() {
-  printf("Opnen Connection!");
+bool bms::DatabaseController::openConnection() {
     try {
         driver = sql::mysql::get_mysql_driver_instance();
         connection = std::shared_ptr<sql::Connection>(
@@ -40,9 +37,10 @@ void bms::DatabaseController::openConnection() {
 
       connection->setSchema("bm_db");
 
-
+      return true;
     } catch (const sql::SQLException& e) {
         std::cerr << "Error opening connection: " << e.what() << '\n';
+        return false;
     }
 }
 

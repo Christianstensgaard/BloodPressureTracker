@@ -26,10 +26,9 @@ extern const char* measureActive;
 
 
 namespace bms{
-  //- common used classes and namespaces
+  extern bool IsRunning;
 
   void write(string s);
-
   void writeLine(string s);
 
 }

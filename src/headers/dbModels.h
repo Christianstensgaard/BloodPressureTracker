@@ -50,7 +50,6 @@ namespace bms
     public:
     JsonElement(const char* data){
       json = data;
-
     }
 
 
@@ -63,6 +62,32 @@ namespace bms
     };
 
 
+    Attribute *find(std::string key){
+      for (size_t i = 0; i < attributeSize; i++)
+      {
+        if(key[0] == pAttributes[i].key[0])
+        {
+          bool isFound = true;
+          for (size_t ix = 0; ix < key.size(); ix++)
+          {
+            if(key[ix] == '\0' || pAttributes[i].key[ix] == '\0')
+              break;
+
+            if(key[ix] != pAttributes[i].key[ix]){
+              isFound = false;
+              break;
+            }
+          }
+
+          if(isFound){
+            return &pAttributes[i];
+          }
+        } 
+      }
+      return nullptr;
+    }
+
+
 
 
 
@@ -70,17 +95,104 @@ namespace bms
       attributeSize = seekLength();
       pAttributes = new Attribute[attributeSize];
 
-      printf("\nDone!");
+      int x1 = 0;
+      int x2 = 0;
+      int z  = 0;
+      int z1 = 0;
+
+      int attribute     = 1;
+      int elementGroup  = 0;
+      int keyPos        = 0;
+
+      while(json[x1] != '\0'){
+
+        const char item = json[x1];
+        if(item == '{'){
+          attribute = 0;
+          z++;
+        }
+        if(item == '}'){
+          z--;
+        }
+
+        if(item == ' ' || item == '\t' || item == '\r'){
+          x1++;
+          continue;
+        }
+
+
+
+        //- < Start Attribute or group >
+        if(item == '"'){
+          x1++;
+          x2 = x1 + 1;
+
+          //- Move to the end of the Key & value
+          while (true)
+          {
+            const char i = json[x2];
+            if(i == '\n' || i == ',' || i == '"')
+              break;
+            
+            if(i == '{'){
+              elementGroup = 1;
+            }
+
+            if(i == '}')
+            {
+              elementGroup = 0;
+            }
+
+            x2++;
+          }
+
+
+          //- Extract the Key or value from the json.
+          if(x2 - x1> 0)
+          {
+            std::string output;
+            output.assign(json + x1, x2 - x1);
+
+            if(attribute){ //- Attribute is 1
+              //- [value] Store the value of the attribute
+              
+              strncpy(pAttributes[keyPos].value, output.c_str(), sizeof(pAttributes[keyPos].value) - 1);
+              pAttributes[keyPos].value[sizeof(pAttributes[keyPos].value) - 1] = '\0';
+
+              //- Storing the values    
+              pAttributes[keyPos].grp_id = z;
+              pAttributes[keyPos].grp_element = z1;
+
+              keyPos++; //- Move to next Attribute in array!
+              attribute = 0;
+            } else {
+              //- [key] Store the key value used as Attribute id
+              strncpy(pAttributes[keyPos].key, output.c_str(), sizeof(pAttributes[keyPos].key) - 1);
+              pAttributes[keyPos].key[sizeof(pAttributes[keyPos].key) - 1] = '\0';
+              attribute = 1;
+            }
+          }
+          x1 = x2;
+        }
+        x1++;
+      }
+
+
+      printf("\n\n");
+      for (size_t i = 0; i < attributeSize; i++)
+      {
+        std::cout << "Key: " << pAttributes[i].key << "\tvalue: " << pAttributes[i].value <<"\r\t\t\t\t\t\tZ:" << pAttributes[i].grp_id <<"\tEID: " << pAttributes[i].grp_element <<  "\n";
+      }
+      printf("\nDone!\n");
     }
 
 
 
     int seekLength()
     {
-      int length = 0;
-      int position = 0;
-
-      int state = 0;
+      int length    = 0;
+      int position  = 0;
+      int state     = 0;
 
 
       while(json[position] != '\0'){
@@ -101,31 +213,15 @@ namespace bms
           break;
         }
 
-
-
         position++; //- move to next char
-
       }
-      
-      printf("EOF");
-      printf("%i", length);
-
       return length;
     }
-    int seekChar(int &i, const char c){
-      return -1;
-    } 
-    bool validChar(const char &c){
-      return c != ' ' || c != '\r' || c!='\t';
-    }
-
+    
 
 
     Attribute *pAttributes;
     int attributeSize = 0;
     const char *json;
   };
-
-
-
 }
