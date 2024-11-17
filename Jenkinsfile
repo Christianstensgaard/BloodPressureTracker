@@ -40,7 +40,6 @@ pipeline {
             steps {
                 sh '''
                 ./src/build.sh
-                sh 'sleep 5'
                 '''
             }
         }
