@@ -75,6 +75,7 @@ pipeline {
                 echo "Deploying to IP: ${env.IP_ADDRESS}"
                 // Add your deployment logic here
             }
+        }
         
     }
 }
