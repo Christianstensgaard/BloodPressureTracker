@@ -50,9 +50,6 @@ pipeline {
                 ./src/build.sh
                 
                 '''
-
-            }
-            steps {
               archiveArtifacts artifacts: 'build/*BloodPressureTracker*', allowEmptyArchive: true
               archiveArtifacts artifacts: 'build_test/*BloodPressureTracker*', allowEmptyArchive: true
             }
