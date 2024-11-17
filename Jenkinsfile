@@ -40,6 +40,7 @@ pipeline {
             steps {
                 sh '''
                 ./src/build.sh
+                sh 'sleep 5'
                 '''
             }
         }
@@ -53,7 +54,7 @@ pipeline {
                 ls
                 '''
 
-              archiveArtifacts artifacts: 'build/**/*', allowEmptyArchive: true
+              archiveArtifacts artifacts: 'build/*', allowEmptyArchive: true
             }
         }
     }
