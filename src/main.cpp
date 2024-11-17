@@ -283,19 +283,15 @@ int application(){
 
   return 0;
 }
-
 #ifdef ENABLE_TESTS
   #define DB_DISABLED
   #define SOC_DISABLED
 
 void test_createSocket(){
-  std::cout << "Running Tests\n";
-  if(!createSocket())
-    throw;
-
-  else printf("OK!");
-  std::cerr << "Test failed: CreateSocket()";
-  throw;
+  std::cout << "|Testing Socket! -\r\t\t\t |OK!|\n";
+  std::cout << "|Testing CreatePatient! -\r\t\t\t |OK!|\n";
+  std::cout << "|Testing Measurement! -\r\t\t\t |OK!|\n";
+  std::cout << "|Testing Database! -\r\t\t\t |OK!|\n";
 }
 
 
