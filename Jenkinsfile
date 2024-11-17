@@ -51,8 +51,16 @@ pipeline {
                 
                 '''
 
+            }
+            steps {
               archiveArtifacts artifacts: 'build/*BloodPressureTracker*', allowEmptyArchive: true
               archiveArtifacts artifacts: 'build_test/*BloodPressureTracker*', allowEmptyArchive: true
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo "Deploying to IP: ${userInput.IP_ADDRESS}"
             }
         }
     }
