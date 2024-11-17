@@ -23,18 +23,8 @@ int *pClient_fd;
 unsigned int clientConnection[MAX_ACTIVE_CLIENTS];
 
 
-#define DB_DISABLED
-#define SOC_DISABLED
-
-
-
-
-
-
-
-int client_pos = 0;
-
-
+// #define DB_DISABLED
+// #define SOC_DISABLED
 
 struct sockaddr_in address;
 int addrlen = sizeof(address);
@@ -142,21 +132,48 @@ void requestHandler(char* rawmessage, int size){
   ends[position] = i_1;
   starts[position] = i_2;
 
-  std::cout << "request: " << message.substr(starts[0], ends[0] - starts[0]) << "\n";
-  if(stringEqual(starts[0], ends[0], "createPatient", message)){
-    if(position != 3)
-      return;
-    patientModel model;
-    model.name = message.substr(starts[1], (ends[1] - starts[1]) );
-    model.mail = message.substr(starts[2], (ends[2] - starts[2]) );
-    model.ssn  = message.substr(starts[3], (ends[3] - starts[3]) );
 
-    std::cout << model.name << "\n";
-    std::cout << model.mail << "\n";
-    std::cout << model.ssn <<  "\n";
+  if(patientActive){
+    if(stringEqual(starts[0], ends[0], "createPatient", message)){
+      if(position != 3)
+        return;
+      patientModel model;
+      model.name = message.substr(starts[1], (ends[1] - starts[1]) );
+      model.mail = message.substr(starts[2], (ends[2] - starts[2]) );
+      model.ssn  = message.substr(starts[3], (ends[3] - starts[3]) );
+
+      std::cout << model.name << "\n";
+      std::cout << model.mail << "\n";
+      std::cout << model.ssn <<  "\n";
+    }
+
+    if(stringEqual(starts[0], ends[0], "updatePatient", message)){
+      if(position != 3)
+        return;
+      patientModel model;
+      model.name = message.substr(starts[1], (ends[1] - starts[1]) );
+      model.mail = message.substr(starts[2], (ends[2] - starts[2]) );
+      model.ssn  = message.substr(starts[3], (ends[3] - starts[3]) );
+
+      std::cout << model.name << "\n";
+      std::cout << model.mail << "\n";
+      std::cout << model.ssn <<  "\n";
+    }
+
+    if(stringEqual(starts[0], ends[0], "deletePatient", message)){
+      if(position != 3)
+        return;
+      patientModel model;
+      model.name = message.substr(starts[1], (ends[1] - starts[1]) );
+      model.mail = message.substr(starts[2], (ends[2] - starts[2]) );
+      model.ssn  = message.substr(starts[3], (ends[3] - starts[3]) );
+
+      std::cout << model.name << "\n";
+      std::cout << model.mail << "\n";
+      std::cout << model.ssn <<  "\n";
+    }
   }
 }
-
 
 int createSocket(){
 
@@ -164,14 +181,7 @@ int createSocket(){
     exit(EXIT_FAILURE);
     return 0;
   }
-  // int opt = 1;
-  // if (setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT, &opt, sizeof(opt))) {
-  //   close(server_fd);
-  //   exit(EXIT_FAILURE);
-  //   return 0;
-  // }
-
-
+  
   address.sin_family = AF_INET;
   address.sin_addr.s_addr = INADDR_ANY;
   address.sin_port = htons(PORT);
@@ -196,9 +206,6 @@ int createSocket(){
   return 1;
 }
 
-
-
-
 int application(){
   cout << "Starting Application 1\n";
 
@@ -215,7 +222,7 @@ int application(){
     std::this_thread::sleep_for(std::chrono::milliseconds(200));
   }
   #endif
-
+  #ifndef SOC_DISABLED
   while(true){
     std::cerr << "Waiting for client to connect\n";
     int clientId = accept(server_fd, (struct sockaddr *)&address, (socklen_t*)&addrlen);
@@ -256,7 +263,8 @@ int application(){
           }
 
           buffer[size] = '\0';
-          requestHandler(buffer, size);
+          requestHandler(buffer, size); //- Send the request to the requestHandler
+
           return 0;
         })
 
@@ -271,6 +279,9 @@ int application(){
       }
     }
   }
+  #endif
+
+
 
   return 0;
 }
