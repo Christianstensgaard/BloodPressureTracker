@@ -8,7 +8,8 @@ mkdir -p build_test
 cd build_test
 
 # Run CMake to configure the project (uncommented)
-cmake -DTEST_ACTIVE=1 ../src/
+cmake -DTEST_ACTIVE ../src/
+
 
 # Check if CMake was successful
 if [ $? -ne 0 ]; then

@@ -287,6 +287,7 @@ int application(){
   #define SOC_DISABLED
 
 void test_createSocket(){
+  std::cout << "Running Tests\n";
   if(!createSocket())
     throw;
 
