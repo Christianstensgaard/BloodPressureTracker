@@ -23,8 +23,8 @@ int *pClient_fd;
 unsigned int clientConnection[MAX_ACTIVE_CLIENTS];
 
 
-// #define DB_DISABLED
-// #define SOC_DISABLED
+#define DB_DISABLED
+#define SOC_DISABLED
 
 struct sockaddr_in address;
 int addrlen = sizeof(address);
