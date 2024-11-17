@@ -41,7 +41,7 @@ pipeline {
                 sh '''
                 ./src/build.sh
                 '''
-              archiveArtifacts artifacts: 'src/build/*', allowEmptyArchive: true
+              archiveArtifacts artifacts: 'build/*', allowEmptyArchive: true
             }
         }
     }
