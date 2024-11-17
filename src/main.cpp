@@ -7,6 +7,8 @@
 #include <cstdlib> // For exit
 #include <unistd.h> // For close()
 
+
+
 using namespace bms;
 using std::cout;
 
@@ -26,7 +28,7 @@ struct sockaddr_in address;
 int addrlen = sizeof(address);
 
 
-#ifdef TEST
+#ifdef ENABLE_TESTS
 void stringSplitterAlgoritmeDesing(){
   //- Christian L.s.j 2024
   std::string message = "createPerson,Hello,Hello,12345678";
@@ -282,7 +284,7 @@ int application(){
   return 0;
 }
 
-#ifdef TEST_ACTIVE
+#ifdef ENABLE_TESTS
   #define DB_DISABLED
   #define SOC_DISABLED
 
@@ -318,7 +320,7 @@ void test_run(){
 
 int main() {
 
-  #ifdef TEST_ACTIVE
+  #ifdef ENABLE_TESTS
     test_run();
     return 0;
   #else
