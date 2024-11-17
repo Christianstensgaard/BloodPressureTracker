@@ -28,10 +28,9 @@ pipeline {
         stage('Run Build Script') {
             steps {
                 sh '''
-                docker run --rm blood-pressure-tracker-build bash -c "
-                cd /app && chmod +x build.sh && ./build.sh
-                "
+                ls 
                 '''
+                
             }
         }
     }
