@@ -4,6 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
+                docker --version
                 ls
                 docker build -t service_build -f build_pipeline/dockerfile.build .
                 docker create --name temp-builder my-app-builder
