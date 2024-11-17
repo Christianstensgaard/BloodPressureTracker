@@ -29,6 +29,8 @@ pipeline {
             steps {
                 sh '''
                 ls 
+                cd src
+                ls
                 '''
                 
             }
