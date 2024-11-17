@@ -49,14 +49,14 @@ pipeline {
                 sh '''
                 ./src/build.sh
                 ls
-                sh 'chmod +r build/BloodPressureTracker'
-                sh 'ls build/BloodPressureTracker'
                 cd build
+                sh 'chmod +r BloodPressureTracker'
+                sh 'ls       BloodPressureTracker'
                 ls
                 '''
 
-              archiveArtifacts artifacts: 'build/BloodPressureTracker', allowEmptyArchive: true
-              archiveArtifacts artifacts: 'build_test/BloodPressureTracker', allowEmptyArchive: true
+              archiveArtifacts artifacts: 'BloodPressureTracker', allowEmptyArchive: true
+              archiveArtifacts artifacts: 'BloodPressureTracker', allowEmptyArchive: true
             }
         }
     }
