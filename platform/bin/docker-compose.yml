@@ -1,0 +1,32 @@
+services:
+  structurizr:
+    image: structurizr/lite
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./docs:/usr/local/structurizr
+  jenkins:
+    image: jenkins/jenkins:lts   
+    container_name: jenkins_server
+    ports:
+      - "3030:8080"              
+      - "50000:50000"        
+    expose:
+      - 3030:3030
+
+  
+
+
+
+
+
+
+
+
+
+
+volumes:
+  jenkins_home:
+
+
+  

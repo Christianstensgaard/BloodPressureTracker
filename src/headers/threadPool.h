@@ -13,6 +13,7 @@ namespace bms
 
         // Join the thread
         void join();
+        void joinWith(Thread &other);
 
     private:
         static void* threadFunction(void* arg);

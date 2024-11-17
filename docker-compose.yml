@@ -1,20 +1,55 @@
 services:
-  structurizr:
-    image: structurizr/lite
+  global_db:
+    container_name: global_db
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: mydatabase
     ports:
-      - "8080:8080"
-    volumes:
-      - ./docs:/usr/local/structurizr
-  jenkins:
-    image: jenkins/jenkins:lts   
-    container_name: jenkins_server
+      - "3307:3306"
+    networks:
+      - bms_net
+
+  region_db:
+    container_name: region_db
+    
+    build:
+      context: .
+      dockerfile: db/dockerfile
     ports:
-      - "3030:8080"              
-      - "50000:50000"        
-    expose:
-      - 3030:3030
+      - "3306:3306"
+    networks:
+      - bms_net
+
+  web_app:
+    container_name: web_system
+    build:
+      context: .
+      dockerfile: bms_app_web/dockerfile
+    ports:
+      - "5000:80"
+    depends_on:
+      - "service_app"
+    networks:
+      - bms_net
+    environment:
+      - SERVICE_SYSTEM_URL=service_app:20200  # Set the service system URL here
+
+  service_app:
+    container_name: service_system
+    build:
+      context: .
+      dockerfile: src/dockerfile
+    depends_on:
+      - region_db
+    ports:
+      - "20200:20200"  # Expose port 20200 for communication with web_app
+    networks:
+      - bms_net
+
 volumes:
-  jenkins_home:
+  db_data:
 
-
-  
+networks:
+  bms_net:
+    driver: bridge

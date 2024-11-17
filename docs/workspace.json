@@ -4,7 +4,7 @@
   "documentation" : { },
   "id" : 1,
   "lastModifiedAgent" : "structurizr-ui",
-  "lastModifiedDate" : "2024-11-14T19:39:42Z",
+  "lastModifiedDate" : "2024-11-16T11:25:30Z",
   "model" : {
     "people" : [ {
       "description" : "A patient who enters blood pressure measurements",
@@ -360,7 +360,7 @@
       } ]
     }, {
       "automaticLayout" : {
-        "applied" : true,
+        "applied" : false,
         "edgeSeparation" : 0,
         "implementation" : "Graphviz",
         "nodeSeparation" : 300,
@@ -369,30 +369,26 @@
         "vertices" : false
       },
       "containerId" : "13",
-      "dimensions" : {
-        "height" : 1300,
-        "width" : 3100
-      },
       "elements" : [ {
         "id" : "4",
-        "x" : 2449,
-        "y" : 499
+        "x" : 0,
+        "y" : 0
       }, {
         "id" : "5",
-        "x" : 199,
-        "y" : 199
+        "x" : 0,
+        "y" : 0
       }, {
         "id" : "12",
-        "x" : 199,
-        "y" : 799
+        "x" : 0,
+        "y" : 0
       }, {
         "id" : "14",
-        "x" : 949,
-        "y" : 499
+        "x" : 0,
+        "y" : 0
       }, {
         "id" : "15",
-        "x" : 1699,
-        "y" : 499
+        "x" : 0,
+        "y" : 0
       } ],
       "externalContainerBoundariesVisible" : false,
       "key" : "MeasurementService",
