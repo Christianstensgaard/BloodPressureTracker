@@ -31,6 +31,9 @@ pipeline {
                 ls 
                 cd build
                 ls
+                echo running application
+
+                ./BloodPressureTracker
                 '''
                 
             }
