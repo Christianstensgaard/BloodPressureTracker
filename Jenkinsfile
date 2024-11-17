@@ -55,10 +55,26 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+        stage('Get IP Address') {
             steps {
-                echo "Deploying to IP: ${userInput.IP_ADDRESS}"
+                script {
+                    // Prompt for user input
+                    def userInput = input(
+                        message: 'Please provide the IP address for deployment:',
+                        parameters: [
+                            string(name: 'IP_ADDRESS', defaultValue: '127.0.0.1', description: 'Enter the target IP address')
+                        ]
+                    )
+                    env.IP_ADDRESS = userInput
+                }
             }
         }
+
+        stage('Deploy') {
+            steps {
+                echo "Deploying to IP: ${env.IP_ADDRESS}"
+                // Add your deployment logic here
+            }
+        
     }
 }
