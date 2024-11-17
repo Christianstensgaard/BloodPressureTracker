@@ -13,6 +13,7 @@ RUN apt-get update && \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
+RUN ls -al
 COPY ./src ./src
 
 RUN cd /app/src && ls -al

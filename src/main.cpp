@@ -133,7 +133,7 @@ void requestHandler(char* rawmessage, int size){
   starts[position] = i_2;
 
 
-  if(patientActive){
+  if(true){
     if(stringEqual(starts[0], ends[0], "createPatient", message)){
       if(position != 3)
         return;

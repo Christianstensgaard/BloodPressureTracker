@@ -1,14 +1,15 @@
 pipeline {
     agent any
     stages {
-        stage('Docker Build') {
+        stage('Build') {
             steps {
                 sh '''
-                cd build_pipeline
-                docker build -f build_pipeline/dockerfile.build -t blood-pressure-tracker-build .
+                docker build -t my-app-builder .
+                docker create --name temp-builder my-app-builder
+                docker cp temp-builder:/app/build ./build
+                docker rm temp-builder
                 '''
             }
-        }
         stage('Run Build Script') {
             steps {
                 sh '''
