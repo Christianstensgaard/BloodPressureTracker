@@ -291,7 +291,7 @@ void test_createSocket(){
   std::cout << "|OK  | Measurement!\n";
   std::cout << "|OK  | Database!\n";
   std::cout << "|FAIL| Buffer Controller!\n";
-  sleep(10);
+  sleep(5);
   // std::cerr << "\nTest Failed\n";
   // throw;
 }
