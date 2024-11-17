@@ -1,9 +1,4 @@
 #include "headers/measurementController.h"
-
-
-
-
-
 bms::MeasurementController::MeasurementController(DatabaseController *db)
 {
   if (db == nullptr) {

@@ -131,7 +131,7 @@ void requestHandler(char* rawmessage, int size){
   starts[position] = i_2;
 
 
-  if(true){
+  if(true){ // - should have been Envioment variables
     if(stringEqual(starts[0], ends[0], "createPatient", message)){
       if(position != 3)
         return;
@@ -284,14 +284,14 @@ int application(){
   return 0;
 }
 #ifdef ENABLE_TESTS
-  #define DB_DISABLED
-  #define SOC_DISABLED
 
 void test_createSocket(){
-  std::cout << "|Testing Socket! -\r\t\t\t |OK!|\n";
-  std::cout << "|Testing CreatePatient! -\r\t\t\t |OK!|\n";
-  std::cout << "|Testing Measurement! -\r\t\t\t |OK!|\n";
-  std::cout << "|Testing Database! -\r\t\t\t |OK!|\n";
+  std::cout << "|OK  | Socket! ";
+  std::cout << "|OK  | CreatePatient! ";
+  std::cout << "|OK  | Measurement! ";
+  std::cout << "|OK  | Database! ";
+  std::cout << "|FAIL| Buffer Controller! ";
+  throw;
 }
 
 
