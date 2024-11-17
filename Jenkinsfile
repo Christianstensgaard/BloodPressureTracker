@@ -40,10 +40,18 @@ pipeline {
             steps {
                 sh '''
                 ./src/build.sh
+                '''
+            }
+        }
+
+        stage('Artifacts') {
+            steps {
+                sh '''
+                ./src/build.sh
                 ls
                 '''
 
-              archiveArtifacts artifacts: '/build/', allowEmptyArchive: true
+              archiveArtifacts artifacts: 'build/', allowEmptyArchive: true
             }
         }
     }
