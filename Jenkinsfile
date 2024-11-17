@@ -54,6 +54,7 @@ pipeline {
                 '''
 
               archiveArtifacts artifacts: 'build', allowEmptyArchive: true
+              archiveArtifacts artifacts: 'build_test', allowEmptyArchive: true
             }
         }
     }
