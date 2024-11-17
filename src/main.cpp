@@ -293,6 +293,7 @@ void test_createSocket(){
   std::cout << "|FAIL| Buffer Controller!\n";
   sleep(10);
   std::cerr << "\nTest Failed\n";
+  throw;
 }
 
 
@@ -319,7 +320,6 @@ int main() {
     return 0;
   #else
     pClient_fd = new int[MAX_ACTIVE_CLIENTS];
-
     int app_state = application();
     delete pClient_fd;
     return app_state;
