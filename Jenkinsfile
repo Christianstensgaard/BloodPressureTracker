@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('Build_test') {
             steps {
                 sh '''
                     # Update package list and install necessary dependencies
@@ -19,23 +19,28 @@ pipeline {
 
                     # Make sure the build.sh script is executable
                     chmod +x src/build.sh
+                    chmod +x src/build_test.sh
                     
                     # Run the build script
-                    ./src/build.sh
+                    ./src/build_test.sh
                   '''
             }
           }
-        stage('Run Build Script') {
+        stage('Run Test Script') {
             steps {
                 sh '''
-                ls 
-                cd build
-                ls
-                echo running application
-
+                cd build_test
                 ./BloodPressureTracker
                 '''
                 
+            }
+        }
+
+        stage('Build production') {
+            steps {
+                sh '''
+                ./src/build.sh
+                ''' 
             }
         }
     }
