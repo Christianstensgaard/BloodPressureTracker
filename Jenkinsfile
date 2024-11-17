@@ -53,7 +53,7 @@ pipeline {
                 ls
                 '''
 
-              archiveArtifacts artifacts: 'build/*', allowEmptyArchive: true
+              archiveArtifacts artifacts: 'build', allowEmptyArchive: true
             }
         }
     }
