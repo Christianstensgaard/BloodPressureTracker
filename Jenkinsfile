@@ -4,12 +4,21 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
-                docker --version
-                ls
-                docker build -t service_build -f build_pipeline/dockerfile.build .
-                docker create --name temp-builder my-app-builder
-                docker cp temp-builder:/app/build ./build
-                docker rm temp-builder
+                apt-get update && \
+                apt-get install -y \
+                build-essential \
+                cmake \
+                g++ \
+                libmysqlcppconn-dev \
+                libpthread-stubs0-dev \
+                libboost-all-dev \
+                libstdc++6 \
+                clang \
+                && rm -rf /var/lib/apt/lists/*
+
+                chmod +x src/build.sh
+                ./src/build.sh
+
                 '''
             }
           }
