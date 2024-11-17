@@ -294,7 +294,7 @@ void test_createSocket(){
     throw;
 
   else printf("OK!");
-  throw;
+  // throw;
 }
 
 
