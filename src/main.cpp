@@ -294,6 +294,7 @@ void test_createSocket(){
     throw;
 
   else printf("OK!");
+  std::cerr << "Test failed: CreateSocket()";
   throw;
 }
 
