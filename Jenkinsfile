@@ -50,8 +50,8 @@ pipeline {
                 ./src/build.sh
                 ls
                 cd build
-                sh 'chmod +r BloodPressureTracker'
-                sh 'ls       BloodPressureTracker'
+                sh chmod +r BloodPressureTracker
+                sh ls       BloodPressureTracker
                 ls
                 '''
 
