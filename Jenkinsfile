@@ -48,13 +48,11 @@ pipeline {
             steps {
                 sh '''
                 ./src/build.sh
-                ls
-                cd build
-                ls
+                
                 '''
 
-              archiveArtifacts artifacts: 'BloodPressureTracker', allowEmptyArchive: true
-              archiveArtifacts artifacts: 'BloodPressureTracker', allowEmptyArchive: true
+              archiveArtifacts artifacts: 'build/*BloodPressureTracker*', allowEmptyArchive: true
+              archiveArtifacts artifacts: 'build_test/*BloodPressureTracker*', allowEmptyArchive: true
             }
         }
     }
