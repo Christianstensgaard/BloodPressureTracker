@@ -10,6 +10,7 @@ pipeline {
                 docker rm temp-builder
                 '''
             }
+          }
         stage('Run Build Script') {
             steps {
                 sh '''
