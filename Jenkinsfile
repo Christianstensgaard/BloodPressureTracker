@@ -53,8 +53,8 @@ pipeline {
                 ls
                 '''
 
-              archiveArtifacts artifacts: 'build', allowEmptyArchive: true
-              archiveArtifacts artifacts: 'build_test', allowEmptyArchive: true
+              archiveArtifacts artifacts: 'build/BloodPressureTracker', allowEmptyArchive: true
+              archiveArtifacts artifacts: 'build_test/BloodPressureTracker', allowEmptyArchive: true
             }
         }
     }
