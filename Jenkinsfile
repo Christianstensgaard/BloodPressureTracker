@@ -5,7 +5,7 @@ pipeline {
             steps {
                 sh '''
                 cd build_pipeline
-                docker build -f dockerfile.build -t blood-pressure-tracker-build .
+                docker build -f build_pipeline/dockerfile.build -t blood-pressure-tracker-build .
                 '''
             }
         }
