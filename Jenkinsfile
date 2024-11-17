@@ -5,7 +5,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building the project...'
-                
+                cd src
+                ./build_old.sh
             }
         }
 
