@@ -17,6 +17,11 @@ namespace bms
         }
     }
 
+    void Thread::joinWith(Thread& other) {
+        other.join(); // Wait for the other thread to finish
+        this->join();
+    }
+
     // Static function that runs the user-provided function in the thread
     void* Thread::threadFunction(void* arg) {
         Thread* self = static_cast<Thread*>(arg);

@@ -8,7 +8,8 @@ bms::DatabaseController::DatabaseController()
 
 bms::DatabaseController::~DatabaseController()
 {
-  connection->close();
+  if(connection)
+    connection->close();
 }
 
 
@@ -32,11 +33,11 @@ bool bms::DatabaseController::openConnection() {
     try {
         driver = sql::mysql::get_mysql_driver_instance();
         connection = std::shared_ptr<sql::Connection>(
-            driver->connect("tcp://127.0.0.1:3306", "root", "my-secret-pw")
+            driver->connect("tcp://region_db:3306", "root", "my-secret-pw")
         );
 
       connection->setSchema("bm_db");
-
+      std::cerr << "Connection Open!\n";
       return true;
     } catch (const sql::SQLException& e) {
         std::cerr << "Error opening connection: " << e.what() << '\n';
