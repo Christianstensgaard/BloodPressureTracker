@@ -49,9 +49,11 @@ pipeline {
                 sh '''
                 ./src/build.sh
                 ls
+                cd build
+                ls
                 '''
 
-              archiveArtifacts artifacts: 'build/', allowEmptyArchive: true
+              archiveArtifacts artifacts: 'build/**/*', allowEmptyArchive: true
             }
         }
     }
