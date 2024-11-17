@@ -40,7 +40,9 @@ pipeline {
             steps {
                 sh '''
                 ./src/build.sh
+                ls
                 '''
+
               archiveArtifacts artifacts: '/build/', allowEmptyArchive: true
             }
         }
