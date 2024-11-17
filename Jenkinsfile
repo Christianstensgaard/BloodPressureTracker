@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
-                docker build -t my-app-builder .
+                docker build -t service_build  -f build_pipeline/dockerfile.build
                 docker create --name temp-builder my-app-builder
                 docker cp temp-builder:/app/build ./build
                 docker rm temp-builder
