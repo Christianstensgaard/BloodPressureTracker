@@ -4,9 +4,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building the project...'
+                // Navigate to the src directory and run build.sh
+                sh '''
                 cd src
-                ./build_old.sh
+                chmod +x build.sh
+                ./build.sh
+                '''
             }
         }
 
