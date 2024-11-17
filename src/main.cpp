@@ -286,19 +286,15 @@ int application(){
 #ifdef ENABLE_TESTS
 
 void test_createSocket(){
-  std::cout << "|OK  | Socket! ";
-  std::cout << "|OK  | CreatePatient! ";
-  std::cout << "|OK  | Measurement! ";
-  std::cout << "|OK  | Database! ";
-  std::cout << "|FAIL| Buffer Controller! ";
+  std::cout << "|OK  | Socket!\n";
+  std::cout << "|OK  | CreatePatient!\n";
+  std::cout << "|OK  | Measurement!\n";
+  std::cout << "|OK  | Database!\n";
+  std::cout << "|FAIL| Buffer Controller!\n";
   sleep(10);
   std::cerr << "Test Failed";
   throw;
 }
-
-
-
-
 
 
 void test_run(){
