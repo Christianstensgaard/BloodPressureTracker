@@ -25,6 +25,7 @@ unsigned int clientConnection[MAX_ACTIVE_CLIENTS];
 
 #define DB_DISABLED
 #define SOC_DISABLED
+#define TEST_ACTIVE
 
 struct sockaddr_in address;
 int addrlen = sizeof(address);
@@ -286,11 +287,50 @@ int application(){
   return 0;
 }
 
+#ifdef TEST_ACTIVE
+  #define DB_DISABLED
+  #define SOC_DISABLED
+
+void test_createSocket(){
+  if(!createSocket())
+    throw;
+
+  else printf("OK!");
+}
+
+
+
+
+
+
+void test_run(){
+  std::cout << "Starting Test\n";
+  test_createSocket();
+}
+#endif
+
+
+
+
+
+
+
+
+
+
 
 int main() {
-  pClient_fd = new int[MAX_ACTIVE_CLIENTS];
 
-  int app_state = application();
-  delete pClient_fd;
-  return app_state;
+  #ifdef TEST_ACTIVE
+    test_run();
+    return 0;
+  #else
+    pClient_fd = new int[MAX_ACTIVE_CLIENTS];
+
+    int app_state = application();
+    delete pClient_fd;
+    return app_state;
+  #endif
+
+
 }
