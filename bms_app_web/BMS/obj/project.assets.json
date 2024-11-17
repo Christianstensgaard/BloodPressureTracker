@@ -60,11 +60,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\git\\bms_app_web\\BMS\\BMS.csproj",
+      "projectUniqueName": "C:\\git\\BloodPressureTracker\\bms_app_web\\BMS\\BMS.csproj",
       "projectName": "BMS",
-      "projectPath": "C:\\git\\bms_app_web\\BMS\\BMS.csproj",
+      "projectPath": "C:\\git\\BloodPressureTracker\\bms_app_web\\BMS\\BMS.csproj",
       "packagesPath": "C:\\Users\\Chalo\\.nuget\\packages\\",
-      "outputPath": "C:\\git\\bms_app_web\\BMS\\obj\\",
+      "outputPath": "C:\\git\\BloodPressureTracker\\bms_app_web\\BMS\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Chalo\\AppData\\Roaming\\NuGet\\NuGet.Config",
