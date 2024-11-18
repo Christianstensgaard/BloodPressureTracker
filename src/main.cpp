@@ -27,24 +27,32 @@ unsigned int clientConnection[MAX_ACTIVE_CLIENTS];
 struct sockaddr_in address;
 int addrlen = sizeof(address);
 
-
 #ifdef ENABLE_TESTS
+bool stringEqual(int s1, int e1, const char* target, const char* stringBuffer);
+void requestHandler(const char* rawmessage, int size);
+
 void test_createSocket(){
   std::cout << "|OK  | Socket!\n";
   std::cout << "|OK  | CreatePatient!\n";
   std::cout << "|OK  | Measurement!\n";
   std::cout << "|OK  | Database!\n";
   std::cout << "|FAIL| Buffer Controller!\n";
-  sleep(5);
-  std::cerr << "\nTest Failed\n";
-  throw;
 }
 
 
 void test_run(){
   std::cout << "Starting Test\n";
-  test_createSocket();
+  // test_createSocket();
+
+  //- Running test on Requesthandler_createPatient()
+  const char* rawRequest = "createPatient,Jesper,Jesper@outlook.dk,1020304";
+  int size = 34;
+  requestHandler(rawRequest, size);
+
+
 }
+
+
 
 void stringSplitterAlgoritmeDesing(){
   //- Christian L.s.j 2024
@@ -103,91 +111,102 @@ void stringSplitterAlgoritmeDesing(){
 #endif
 
 
-bool stringEqual(int s1, int e1, std::string target, std::string &message){
+bool stringEqual(int s1, int e1, const char* target, const char* stringBuffer){
   int size  = e1 - s1;
-  int sSize = target.size();
-
-  using std::cout;
-
-  cout << "\n";
-  cout << "size: " << size << " pSize: " << sSize << "\n";
-
-  if(size != sSize)
-    return false;
-
   for (size_t i = 0; i < size; i++)
   {
-    cout << message[s1 + i] << "." << target[i] << " ";
-    if( message[s1 + i] != target[i] )
+    printf("<%c><%c>\n" ,target[i], stringBuffer[i+s1]);
+
+    if(target[i] == '\0' || stringBuffer[i+s1] == '\0')
+    {
+      if(target[i] == '\0' && size == i+1)
+      {
+        printf("EOL\n");
+        break;
+      }
+      else return false;
+    }
+
+    if(target[i] != stringBuffer[i+s1])
       return false;
   }
-  cout << "\n";
   return true;
 }
-void requestHandler(char* rawmessage, int size){
-  std::string message(rawmessage);
+int stringSplit(int &currentPosition, const std::string &stringBuffer, char splitOn, std::string &output) {
+    output.clear();
+    while (currentPosition < stringBuffer.size()) {
+        char currentChar = stringBuffer[currentPosition++];
+        
+        if (currentChar == splitOn) {
+            return 1;
+        }
+        output += currentChar;
+    }
+    if (!output.empty()) {
+        return 0;
+    }
+    return -1;
+}
 
-  int starts[10];
-  int ends[10];
-  int i_1 = 0;
-  int i_2 = 0;
+int stringFindCharPosition(int &startPosition, std::string stringBuffer, int &position, char splitter){
+  if(stringBuffer[startPosition] == splitter)
+    startPosition++;
+  while(stringBuffer[startPosition] != '\0'){
+    if(stringBuffer[startPosition++] == splitter){
+      position = startPosition -1;
+      return 0;
+    }
+  }
+  position = startPosition;
+  return -1;
+}
+
+
+void requestHandler(const char* rawmessage, int size){
+  std::string message(rawmessage);
+  
+  int startPosition = 0;
+  int s2 = 0;
   int position = 0;
 
-  while (message[i_1] != '\0')
+  stringFindCharPosition(startPosition, message, position, ',');
+
+  std::cout << "Posistion = " << position << "\n";
+  std::string output = message.substr(s2, position - s2);
+  std::cout << "output:" << output << "\n";
+
+  if(output == "createpatient"){
+    std::cout << "creating patient!" << "\n";
+
+    patientModel model;
+
+    s2 = startPosition;
+    stringFindCharPosition(startPosition, message, position, ',');
+
+    model.name = message.substr(s2, position-s2);
+    std::cout << "name = " << model.name << "\n";
+
+
+    s2 = startPosition;
+    stringFindCharPosition(startPosition, message, position, ',');
+    model.mail = message.substr(s2, position-s2);
+    std::cout << "mail = " << model.mail << "\n";
+
+    s2 = startPosition;
+    stringFindCharPosition(startPosition, message, position, ',');
+    model.ssn = message.substr(s2, position-s2);
+    std::cout << "ssn = " << model.ssn << "\n";
+
+    #ifndef DB_DISABLED
+      patient_controller.createPatient(model);
+    #endif
+
+  }
+  else if (output == "createMeasurement")
   {
-    if(message[i_1] == ','){
-      ends[position] = i_1;
-      i_1++;
-      starts[position++] = i_2;
-      i_2 = i_1;
-    }
-    i_1++;
+    std::cout << "Adding measurement\n";
   }
-
-  ends[position] = i_1;
-  starts[position] = i_2;
-
-
-  if(true){ // - should have been Envioment variables
-    if(stringEqual(starts[0], ends[0], "createPatient", message)){
-      if(position != 3)
-        return;
-      patientModel model;
-      model.name = message.substr(starts[1], (ends[1] - starts[1]) );
-      model.mail = message.substr(starts[2], (ends[2] - starts[2]) );
-      model.ssn  = message.substr(starts[3], (ends[3] - starts[3]) );
-
-      std::cout << model.name << "\n";
-      std::cout << model.mail << "\n";
-      std::cout << model.ssn <<  "\n";
-    }
-
-    if(stringEqual(starts[0], ends[0], "updatePatient", message)){
-      if(position != 3)
-        return;
-      patientModel model;
-      model.name = message.substr(starts[1], (ends[1] - starts[1]) );
-      model.mail = message.substr(starts[2], (ends[2] - starts[2]) );
-      model.ssn  = message.substr(starts[3], (ends[3] - starts[3]) );
-
-      std::cout << model.name << "\n";
-      std::cout << model.mail << "\n";
-      std::cout << model.ssn <<  "\n";
-    }
-
-    if(stringEqual(starts[0], ends[0], "deletePatient", message)){
-      if(position != 3)
-        return;
-      patientModel model;
-      model.name = message.substr(starts[1], (ends[1] - starts[1]) );
-      model.mail = message.substr(starts[2], (ends[2] - starts[2]) );
-      model.ssn  = message.substr(starts[3], (ends[3] - starts[3]) );
-
-      std::cout << model.name << "\n";
-      std::cout << model.mail << "\n";
-      std::cout << model.ssn <<  "\n";
-    }
-  }
+  else std::cout << "failed to read action string" << "\n";
 }
 
 int createSocket(){
@@ -202,7 +221,7 @@ int createSocket(){
   address.sin_port = htons(PORT);
 
   // Convert IPv4 address from text to binary form
-  if (inet_pton(AF_INET, "127.0.0.1", &address.sin_addr) <= 0) {
+  if (inet_pton(AF_INET, "0.0.0.0", &address.sin_addr) <= 0) {
       std::cerr << "Invalid address/ Address not supported\n";
       return -1;
   }
@@ -275,11 +294,12 @@ int application(){
             } 
             counter++;
           }
-
           buffer[size] = '\0';
           requestHandler(buffer, size); //- Send the request to the requestHandler
-
           return 0;
+        })
+        ->error([](){
+          printf("Error doing Reading client!\n");
         })
 
         ->final([pTask](){
@@ -287,8 +307,6 @@ int application(){
           clientConnection[pTask->id] = 0x00;
           close(pClient_fd[pTask->id]); 
         })
-        ->await()
-        
         ->invoke();
         break;
       }

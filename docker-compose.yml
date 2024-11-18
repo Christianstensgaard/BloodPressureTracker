@@ -47,7 +47,7 @@ services:
     depends_on:
       - region_db
     ports:
-      - "20200:20200" 
+      - "20200:20200"
     networks:
       - bms_net
     deploy:

@@ -17,8 +17,8 @@ public class IndexModel : PageModel
 
     public string? ResponseMessage { get; set; }
 
-    private const string ServerIp = "service_app";  // Change to your server IP address
-    private const int ServerPort = 20200;        // Change to your server's port
+    private const string ServerIp = "service_system";
+    private const int ServerPort = 20200;       
 
     public void OnGet()
     {
