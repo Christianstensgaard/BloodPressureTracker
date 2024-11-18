@@ -29,6 +29,23 @@ int addrlen = sizeof(address);
 
 
 #ifdef ENABLE_TESTS
+void test_createSocket(){
+  std::cout << "|OK  | Socket!\n";
+  std::cout << "|OK  | CreatePatient!\n";
+  std::cout << "|OK  | Measurement!\n";
+  std::cout << "|OK  | Database!\n";
+  std::cout << "|FAIL| Buffer Controller!\n";
+  sleep(5);
+  std::cerr << "\nTest Failed\n";
+  throw;
+}
+
+
+void test_run(){
+  std::cout << "Starting Test\n";
+  test_createSocket();
+}
+
 void stringSplitterAlgoritmeDesing(){
   //- Christian L.s.j 2024
   std::string message = "createPerson,Hello,Hello,12345678";
@@ -203,7 +220,6 @@ int createSocket(){
   }
   return 1;
 }
-
 int application(){
   cout << "Starting Application 1\n";
 
@@ -271,6 +287,7 @@ int application(){
           clientConnection[pTask->id] = 0x00;
           close(pClient_fd[pTask->id]); 
         })
+        ->await()
         
         ->invoke();
         break;
@@ -283,34 +300,6 @@ int application(){
 
   return 0;
 }
-#ifdef ENABLE_TESTS
-
-void test_createSocket(){
-  std::cout << "|OK  | Socket!\n";
-  std::cout << "|OK  | CreatePatient!\n";
-  std::cout << "|OK  | Measurement!\n";
-  std::cout << "|OK  | Database!\n";
-  std::cout << "|FAIL| Buffer Controller!\n";
-  sleep(5);
-  // std::cerr << "\nTest Failed\n";
-  // throw;
-}
-
-
-void test_run(){
-  std::cout << "Starting Test\n";
-  test_createSocket();
-}
-#endif
-
-
-
-
-
-
-
-
-
 
 
 int main() {

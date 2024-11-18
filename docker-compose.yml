@@ -23,6 +23,7 @@ services:
 
   web_app:
     container_name: web_system
+    restart: always
     build:
       context: .
       dockerfile: bms_app_web/dockerfile
@@ -33,19 +34,24 @@ services:
     networks:
       - bms_net
     environment:
-      - SERVICE_SYSTEM_URL=service_app:20200  # Set the service system URL here
+      - SERVICE_SYSTEM_URL=service_app:20200
+    deploy:
+      replicas: 1
 
   service_app:
     container_name: service_system
+    restart: always
     build:
       context: .
       dockerfile: src/dockerfile
     depends_on:
       - region_db
     ports:
-      - "20200:20200"  # Expose port 20200 for communication with web_app
+      - "20200:20200" 
     networks:
       - bms_net
+    deploy:
+      replicas: 1
 
 volumes:
   db_data:
